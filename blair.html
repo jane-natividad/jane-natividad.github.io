@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blair Health Funnel Teardown — A Closer Look | Jane Natividad</title>
+<meta name="description" content="A self-directed teardown of Blair Health's live specialist-care funnel, researched by Jane Natividad before applying for the Senior Product Manager role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.4vw, 38px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 620px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 500px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .quote {
+    border-left: 2px solid var(--blue); padding: 2px 0 2px 16px; font-style: italic;
+    color: var(--ink-soft); margin: 14px 0; font-size: 13.5px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+  .experiment-box {
+    background: var(--tint); border-radius: 12px; padding: 20px 22px; margin: 16px 0;
+  }
+  .experiment-box p { margin-bottom: 10px; }
+  .experiment-box p:last-child { margin-bottom: 0; }
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { color: var(--ink-muted); text-decoration: underline; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Product Analysis · Independent Work</span>
+    <h1>Blair Health funnel teardown — a self-directed product analysis.</h1>
+    <p class="subline">Applying my product instincts to a live, public specialist-care funnel before applying for the role.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This should not go anywhere until someone at Blair (or with real knowledge of the business) has read it and confirmed nothing here is off.</strong> I'm reasoning from the outside, from public pages, the App Store listing, and the first step of the live sign-up flow, and I don't have access to Blair's actual funnel metrics, support data, or internal roadmap. This isn't a critique of Blair's team, who I have no visibility into beyond what's public — it's an example of how I approach a product cold.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Researched August 5, 2026 &middot; Public sources only. No account was created and no assessment was completed; nothing here relies on private data.</p>
+
+      <p>I put this together on August 5, 2026, before applying to Blair, as a way of testing my own product instincts against a live, public specialist-care funnel rather than just describing my approach in the abstract.</p>
+
+      <div class="section-label">What I Actually Looked At</div>
+      <ul>
+        <li><b>Marketing site:</b> home, how-it-works, FAQ, and pricing pages at blairhealth.ca.</li>
+        <li><b>Sign-up flow:</b> the first step of the live flow at app.blairhealth.ca — phone, email, consent, SMS verification. I stopped there; I did not create an account or complete an assessment.</li>
+        <li><b>App Store listing:</b> the Blair Health app's public listing, including its full version history back to the v1.0 launch in January 2026, and its 2 visible ratings as of this writing.</li>
+      </ul>
+      <p>What I did <b>not</b> do: create a real account, complete a program assessment, enter payment details, or see Blair's internal analytics. Anything below framed as a guess is a guess.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">The Funnel, Stage by Stage</div>
+
+      <h2 class="finding-h">1. Awareness / first touch</h2>
+      <p>The app has 2 ratings on the App Store as of this writing, roughly seven months after launch. Ratings undercount real users significantly, so this isn't a literal user count, but at this stage it's a reasonable proxy for how early the top of the funnel still is.</p>
+      <div class="finding"><b>Observation:</b> there's no visible paid-acquisition surface on the public site itself, no landing pages tied to specific campaigns that I could find. Worth flagging only because it suggests the funnel problem right now is probably still "get anyone in the door" more than "optimize an existing high-volume funnel."</div>
+
+      <h2 class="finding-h">2. Landing page</h2>
+      <p>The four programs (Perimenopause, Menopause, Urology & Pelvic Health, Nutrition & Healthy Aging) are laid out clearly, and there's a short pre-signup quiz ("Do you still get a period?") that qualifies a visitor before asking for any commitment, a good low-friction engagement mechanic.</p>
+      <div class="finding"><b>Finding:</b> the same "How it works" page mixes consumer-facing steps ("Sign up → Select your program → Complete assessments...") with what reads as B2B employer-benefit copy ("Employees receive immediate insights into their menopause stage") in the same scroll, with no visible split between "I'm signing up for myself" and "I'm an employer evaluating this as a benefit." Those are two different buyers with different objections, and collapsing them onto one page usually costs conversion on both sides.</div>
+
+      <h2 class="finding-h">3. Sign-up (step 1, confirmed by hand)</h2>
+      <p>Phone number plus email, one consent checkbox, SMS verification, with an English/French toggle already present at this step. That's genuinely minimal friction for a healthcare intake, this part is good, not a complaint.</p>
+
+      <h2 class="finding-h">4. Program selection and assessment</h2>
+      <p>This is where the evidence gets concrete rather than speculative. The App Store version history shows real, shipped defects at exactly this stage.</p>
+      <div class="finding"><b>Finding, directly sourced:</b> v1.3 (May 19) fixed "issue with program display" and, separately, "component names appearing instead of title text," meaning raw internal labels were visible to users instead of proper copy at some point before that release. v1.4 (June 11) release notes list "reliability improvements — fixes for assessments, booking, sign-in, and layout on iPhone and iPad" as a single bundled fix, meaning all four of those steps had known issues into early June. That's not a guess about where drop-off might be happening, it's the team's own changelog confirming that the exact steps between sign-up and a completed assessment were breaking for some users as recently as two months ago.</div>
+
+      <h2 class="finding-h">5. Payment</h2>
+      <p>Pricing is transparent and reasonably simple ($200 initial visit and treatment plan, $25/month ongoing, $100 follow-up), and it's positioned as HSA/FSA-eligible.</p>
+      <div class="finding"><b>Worth testing, not assuming:</b> "FSA" specifically is U.S. benefits terminology. Canada has Health Spending Accounts (sometimes also shortened to HSA) through employer plans, but "FSA" isn't a term most Canadian patients paying out of pocket will recognize, and Blair is explicitly Canada-only. If that label is untested, it's a plausible small point of hesitation at exactly the moment someone is about to pay.</div>
+
+      <h2 class="finding-h">6. Retention</h2>
+      <p>A period/symptom tracker is the main ongoing-engagement mechanic, and v1.5 (July 14) shipped "improved period tracker — clearer cycle insights and a smoother tracking experience," which reads as an acknowledgment that the original version had usability problems. That's a good, healthy pattern (ship, notice friction, simplify), the same pattern I've seen work in my own experience, just visible here from the outside via the changelog instead of from the inside via analytics.</p>
+
+      <h2 class="finding-h">7. One structural note, not a criticism</h2>
+      <p>The app supports French (added v1.2, May 6) and the marketing site is bilingual, but the FAQ states service is unavailable in Quebec. French support outside Quebec makes sense (Ontario and New Brunswick both have real francophone populations), so this isn't necessarily a mistake, but it's worth being explicit internally about which francophone market the French UI is actually built for, since "why is this in French if we don't serve Quebec" is exactly the kind of question a new user might ask before trusting the product.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">One Specific, Testable Experiment</div>
+      <div class="experiment-box">
+        <p><b>Hypothesis:</b> based on the version-history evidence above, I'd bet a meaningful share of early drop-off between sign-up and a completed assessment has been technical (broken program display, assessment/booking reliability) rather than purely a pricing or interest objection, and that this is now mostly, but maybe not entirely, fixed as of the June/July releases.</p>
+        <p><b>What I'd actually do first, in the role:</b> instrument and dashboard step-by-step completion rate across sign-up → program selection → assessment completion → treatment plan received, segmented by app version, so the team can see directly whether the June/July reliability fixes actually moved the number, rather than assuming they did because the bug reports stopped. If the dashboard shows the post-fix cohorts still dropping at program selection or assessment completion at a similar rate to before, that tells you the real blocker was never the bug, it was the design of that step, and the next move is a UX simplification test there, not another reliability pass. If the post-fix cohorts convert meaningfully better, that confirms reliability was the real lever and buys confidence to invest further engineering time in hardening that path before spending on acquisition. Either answer is useful, and it's a one-to-two-week build for someone who's done exactly this kind of drop-off instrumentation before, not a new capability to figure out from scratch.</p>
+      </div>
+
+      <div class="section-label">One Honestly-Scoped Next-Market Idea</div>
+      <p>Blair already ships French-language support but explicitly excludes Quebec, roughly a quarter of the Canadian population, with its own regulatory body and language-law requirements (Bill 96, Collège des médecins du Québec / Ordre des pharmaciens du Québec). I'm not proposing this because I have Quebec-specific regulatory experience, I don't, but I do have direct experience scoping multi-market regulatory readiness before a rollout (piloting a governed platform across four markets at Nestlé, each with its own compliance bar, and a FAIR-data platform across two markets at Swisse). Quebec would be a real, bounded scoping exercise: what's different about telehealth prescribing and provincial insurance interaction there, and whether the French UI investment already made is a head start or a false sense of readiness. I'd want to research it properly before treating it as more than a first hypothesis worth testing.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        <a href="https://www.blairhealth.ca/" target="_blank" rel="noreferrer">blairhealth.ca</a> — home, how-it-works, FAQ, pricing<br>
+        <a href="https://app.blairhealth.ca/" target="_blank" rel="noreferrer">app.blairhealth.ca</a> — live sign-up flow, first step only<br>
+        App Store — Blair Health app listing (iOS), full version history reviewed August 5, 2026
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
