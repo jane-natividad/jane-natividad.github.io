@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix Funnel Teardown — A Closer Look | Jane Natividad</title>
+<meta name="description" content="A self-directed teardown of Phoenix's live telehealth funnel, researched by Jane Natividad before applying for the Senior Product Manager role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.4vw, 38px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 620px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 500px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .quote {
+    border-left: 2px solid var(--blue); padding: 2px 0 2px 16px; font-style: italic;
+    color: var(--ink-soft); margin: 14px 0; font-size: 13.5px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+  .experiment-box {
+    background: var(--tint); border-radius: 12px; padding: 20px 22px; margin: 16px 0;
+  }
+  .experiment-box p { margin-bottom: 10px; }
+  .experiment-box p:last-child { margin-bottom: 0; }
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { color: var(--ink-muted); text-decoration: underline; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Product Analysis · Independent Work</span>
+    <h1>Phoenix funnel teardown — a self-directed product analysis.</h1>
+    <p class="subline">Applying my product instincts to a live, public telehealth funnel before applying for the role.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This should not go anywhere until someone at Phoenix (or with real knowledge of the business) has read it and confirmed nothing here is off.</strong> I'm reasoning from the outside, from public pages and reviews, and I don't have access to Phoenix's actual funnel metrics, support ticket data, or internal roadmap. This isn't a critique of Phoenix's team, who I have no visibility into beyond what's public — it's an example of how I approach a product cold.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Researched August 10, 2026 &middot; All claims sourced to a specific page, review, or dated statement. Where I'm inferring rather than reporting something I directly saw, I've flagged it as such.</p>
+
+      <p>I put this together on August 10, 2026, before applying to Phoenix, as a way of testing my own product instincts against a live, public telehealth funnel rather than just describing my approach in the abstract.</p>
+
+      <div class="section-label">What I Actually Looked At</div>
+      <ul>
+        <li><b>Marketing site:</b> homepage, /pricing, /how-it-works, /faq (embedded in homepage), /onboarding, fetched directly.</li>
+        <li><b>Sign-up flow:</b> navigated the live intake quiz at patient.phoenix.ca/onboarding/wl/ through the "assigned sex at birth" and "date of birth" screens. I stopped before entering a name, email, or any payment information — I did not create an account or submit the medical questionnaire.</li>
+        <li><b>App Store listing:</b> apps.apple.com/ca/app/phoenix-health-tracker/id6751853504, including the visible version history (5 entries, Dec 16 2025 to May 21 2026) and the one publicly visible written review.</li>
+        <li><b>Google Play listing:</b> play.google.com/store/apps/details?id=com.phoenixhealth.phoenix.</li>
+        <li><b>Trustpilot:</b> ca.trustpilot.com/review/phoenix.ca, including the 1-star filter, read live in-browser (not cached search snippets).</li>
+        <li><b>Press coverage:</b> the March 13, 2025 BusinessWire release announcing Phoenix's $50M Series A, and the May 20, 2026 joint BusinessWire release with Raven announcing generic semaglutide.</li>
+        <li><b>Reddit:</b> searched site:reddit.com phoenix.ca Ozempic, turned up nothing specific to Phoenix to cite.</li>
+      </ul>
+      <p>What I did <b>not</b> do: create a real account, submit the medical questionnaire, enter payment details, or see Phoenix's internal analytics. Anything below framed as a guess is a guess.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">The Funnel, Stage by Stage</div>
+
+      <h2 class="finding-h">1. Awareness / homepage</h2>
+      <p>The homepage leads with "Men's health made simple," a Trustpilot badge reading <b>"Excellent Trustpilot 4.5 star rating,"</b> and a $124.99 Ozempic/generic-semaglutide price banner. (<a href="https://www.phoenix.ca/" target="_blank" rel="noreferrer">phoenix.ca</a>)</p>
+      <div class="finding"><b>Finding:</b> When I checked the live Trustpilot profile the same day, the actual score was <b>4.3</b> ("Excellent," 1,362 reviews), not 4.5. (<a href="https://ca.trustpilot.com/review/phoenix.ca" target="_blank" rel="noreferrer">ca.trustpilot.com/review/phoenix.ca</a>) This is most likely a stale cached widget rather than a deliberate overstatement — Trustpilot embeds often lag the live score — but it's a real, checkable mismatch between what the homepage tells a visitor and what they'll find if they click through.</div>
+
+      <h2 class="finding-h">2. Pricing page</h2>
+      <p>Phoenix discloses medication prices clearly (Ozempic/generic from $124.99, Wegovy from $399.99, Mounjaro/Zepbound from $339.99, ED meds from $54 to 115) and states: <em>"Consultation fees range from $40-$50 and are waived for first-time patients when you place your first order."</em> (<a href="https://www.phoenix.ca/pricing" target="_blank" rel="noreferrer">phoenix.ca/pricing</a>)</p>
+      <div class="finding"><b>Finding:</b> The waiver is explicit for the <em>first</em> order but the page doesn't say anything about what happens on renewal. A verified Trustpilot review dated <b>July 13, 2026</b> (4 stars) makes exactly this point:</div>
+      <div class="quote">"Fast response time, quick shipping. I would give a five star except the advertised price of ozempic clearly did not include the monthly 'consult' fee. Otherwise, well run, well organized, fast response time to questions."</div>
+
+      <h2 class="finding-h">3. Sign-up / intake quiz</h2>
+      <p>I ran the live flow. The first two questions are: "For the medical form, please specify your assigned sex at birth" (Male/Female), then date of birth. (<a href="https://patient.phoenix.ca/onboarding/wl/gender" target="_blank" rel="noreferrer">patient.phoenix.ca/onboarding/wl/gender</a>)</p>
+      <div class="finding"><b>Finding, directly observed:</b> This exact screen, same wording, same layout, also opens Raven's (Phoenix's sister brand for women) intake quiz. The two products run on the same underlying onboarding template. Not a flaw by itself, but it means neither brand's front door is currently differentiated by anything the visitor has told them yet; personalization only starts after category selection.</div>
+
+      <h2 class="finding-h">4. Checkout / first charge</h2>
+      <p>I didn't reach checkout myself, but a <b>verified, updated Trustpilot review</b> (originally posted, updated May 21, 2026) describes exactly what happens when a customer tries to back out at this stage:</p>
+      <div class="quote">"I have been trying to talk to support to not go through with my subscription and cancel it and they went ahead and charged me already... the email said i had 72 hrs to decide and i didnt even get 24. I have yet to hear from customer service... there is not a # to get a hold of them."</div>
+      <p>Phoenix replied the same day, acknowledging the billing concern and saying they'd "likely" catch the cancellation before shipment. (<a href="https://ca.trustpilot.com/review/phoenix.ca?stars=1" target="_blank" rel="noreferrer">ca.trustpilot.com/review/phoenix.ca?stars=1</a>)</p>
+      <div class="finding"><b>Finding:</b> This is the single most concrete, highest-stakes complaint pattern I found — a named decision window (72 hours) that a customer says wasn't honored, no phone channel, and email-only support during a live billing dispute.</div>
+
+      <h2 class="finding-h">5. Post-purchase / subscription pricing fairness</h2>
+      <p>A <b>verified 1-star review dated July 29, 2026</b> raises a different but related issue:</p>
+      <div class="quote">"Other than the fact that I wasn't loosing weight on the lower dosage and you can now get Ozempic online for $99 a month. Why is that? I have lost this week with the higher dosage."</div>
+      <p>This reads as an existing subscriber noticing new-customer pricing undercutting what they're currently paying. Other 1-star reviews from the same week are about medical outcomes, not the funnel — e.g., "Ended up in the hospital due to ozempic. Its not for everyone" (July 29, 2026) and "I have not lost any weight so far... it is not going good at all" (July 28, 2026) — worth knowing about but not something a funnel or pricing change would fix.</p>
+
+      <h2 class="finding-h">6. App / ongoing engagement</h2>
+      <p>Phoenix Health Tracker (iOS) sits at 3.7/5 from 3 ratings; Google Play shows 3.8/5 from 5 reviews and "1K+" downloads. The visible version history (App Store) runs from 1.0.2 (Dec 16, 2025) through 1.2.3 (May 21, 2026, "Passkey Authentication... bug fixes, minor UX changes and performance improvements"), including a 1.2.1 release (Apr 29, 2026) introducing shot tracking.</p>
+      <div class="finding"><b>Finding:</b> The only written App Store review currently visible (dated July 14) reads: <em>"It used to be very useful but now it doesn't do anything. I can't even log in to check the status of my prescriptions, speak with a pharmacist and more but now it just doesn't do anything."</em> Phoenix's developer reply says it may be about "the App Store experience rather than the Phoenix app." I can't verify which side is right from the outside, but the review's specific complaint (can't check prescription status, can't message pharmacist) describes core app functionality, not App Store metadata, so the deflection reads a little thin as a public response.</div>
+
+      <hr class="divider">
+
+      <div class="section-label">One Experiment I'd Run</div>
+      <div class="experiment-box">
+        <p><b>Hypothesis:</b> The billing-dispute pattern in section 4 (charged before the disclosed decision window, no phone line, slow async resolution) and the consult-fee surprise in section 2 share a root cause — customers don't have a clear, persistent view of what they agreed to and when they'll be charged next after they complete the intake quiz.</p>
+        <p><b>What I'd test:</b> Add an explicit order-confirmation step, shown immediately after checkout and repeated in the confirmation email, that states in plain language: "Your card will be charged $X today. Your next charge will be $Y (medication + consult fee) on [date]. You can cancel before [specific date/time] by [specific mechanism] — here's how." Compare against the current flow.</p>
+        <p><b>What I'd measure:</b> Support tickets tagged "unexpected charge" or "cancellation" per 100 completed checkouts, in the 30 days before vs. after; and the rate of new Trustpilot reviews mentioning "charge," "billed," or "consult fee" in the same window. I'd expect — and this is a bet, not a claim — that a clearer upfront charge schedule reduces both, since the review evidence suggests the surprise itself, not the fee amount, is what's driving the anger.</p>
+      </div>
+
+      <div class="section-label">One Growth Idea, Honestly Scoped</div>
+      <p>Health Canada approved a generic semaglutide on <b>April 28, 2026</b>, making Canada "the first G7 country to offer a generic semaglutide," per Phoenix and Raven's own joint press release, and Phoenix launched direct-to-patient access at $124.99 on <b>May 20, 2026</b>. Phoenix already publishes comparison content on this exact topic, e.g., a blog post titled "Branded vs. Generic Semaglutide in Canada: What Actually Changes."</p>
+      <p>I'd bet there's a real, time-limited SEO and paid-search opportunity in this specific moment: Phoenix has a genuine "first mover" claim (sourced, dated, defensible) on a search topic ("generic semaglutide Canada," "Ozempic alternative price Canada") that's new enough that competitors' content likely hasn't caught up yet. I don't know Phoenix's current search rankings, ad spend, or conversion rates on that content, so I can't claim this would move a specific number, but building out a small cluster of comparison/price pages around the generic-semaglutide approval, timed to the news cycle it's already part of, is a low-risk extension of something they've already started rather than a new bet.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        <a href="https://www.phoenix.ca/" target="_blank" rel="noreferrer">phoenix.ca</a> — homepage<br>
+        <a href="https://www.phoenix.ca/pricing" target="_blank" rel="noreferrer">phoenix.ca/pricing</a><br>
+        <a href="https://patient.phoenix.ca/onboarding/wl/gender" target="_blank" rel="noreferrer">patient.phoenix.ca/onboarding/wl/gender</a> — live intake flow<br>
+        <a href="https://apps.apple.com/ca/app/phoenix-health-tracker/id6751853504" target="_blank" rel="noreferrer">apps.apple.com — Phoenix Health Tracker</a><br>
+        <a href="https://apps.apple.com/ca/app/6751853504?see-all=reviews&platform=iphone" target="_blank" rel="noreferrer">apps.apple.com — Phoenix reviews</a><br>
+        <a href="https://play.google.com/store/apps/details?id=com.phoenixhealth.phoenix" target="_blank" rel="noreferrer">play.google.com — Phoenix Health Tracker</a><br>
+        <a href="https://ca.trustpilot.com/review/phoenix.ca" target="_blank" rel="noreferrer">ca.trustpilot.com/review/phoenix.ca</a><br>
+        <a href="https://ca.trustpilot.com/review/phoenix.ca?stars=1" target="_blank" rel="noreferrer">ca.trustpilot.com/review/phoenix.ca?stars=1</a><br>
+        <a href="https://www.businesswire.com/news/home/20250313401248/en/Phoenix-Announces-50-Million-Investment-Round-Led-by-Valspring-Capital-to-Increase-Access-to-Mens-Healthcare-in-Canada" target="_blank" rel="noreferrer">BusinessWire — $50M Series A, March 13, 2025</a><br>
+        <a href="https://www.businesswire.com/news/home/20260521867755/en/Phoenix-and-Raven-Become-First-Canadian-Telehealth-Platforms-to-Offer-Generic-Semaglutide-Direct-to-Patients" target="_blank" rel="noreferrer">BusinessWire — generic semaglutide launch, May 20, 2026</a><br>
+        <a href="https://www.phoenix.ca/blog/switching-branded-generic-semaglutide-canada" target="_blank" rel="noreferrer">phoenix.ca/blog — branded vs. generic semaglutide</a>
+      </p>
+
+      <p class="meta-line" style="margin-top:28px;">Related: <a href="https://jane-natividad.github.io/raven.html">Raven funnel teardown →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
