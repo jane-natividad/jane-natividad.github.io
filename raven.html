@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raven Funnel Teardown — A Closer Look | Jane Natividad</title>
+<meta name="description" content="A self-directed teardown of Raven's live telehealth funnel, researched by Jane Natividad before applying for the Phoenix Senior Product Manager role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.4vw, 38px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 620px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 500px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .quote {
+    border-left: 2px solid var(--blue); padding: 2px 0 2px 16px; font-style: italic;
+    color: var(--ink-soft); margin: 14px 0; font-size: 13.5px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+  .experiment-box {
+    background: var(--tint); border-radius: 12px; padding: 20px 22px; margin: 16px 0;
+  }
+  .experiment-box p { margin-bottom: 10px; }
+  .experiment-box p:last-child { margin-bottom: 0; }
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { color: var(--ink-muted); text-decoration: underline; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Product Analysis · Independent Work</span>
+    <h1>Raven funnel teardown — a self-directed product analysis.</h1>
+    <p class="subline">Same exercise as the Phoenix teardown, applied to Raven — Phoenix's sister brand for women's health.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This should not go anywhere until someone at Raven (or with real knowledge of the business) has read it and confirmed nothing here is off.</strong> I'm reasoning from the outside, from public pages and reviews, and I don't have access to Raven's actual funnel metrics, support ticket data, or internal roadmap. I've noted where Raven shares infrastructure and a legal entity with Phoenix, since that context matters for reading some of the findings below.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Researched August 10, 2026 &middot; All claims sourced to a specific page, review, or dated statement. Where I'm inferring rather than reporting something I directly saw, I've flagged it as such.</p>
+
+      <p><b>Note on independence:</b> Raven is not a standalone company. Its own press releases describe it as founded by Phoenix ("Phoenix also launched Raven, a telehealth platform built to support women through every stage of their health journey"), shares Phoenix's legal entity (Phoenix Digital Health Inc., same Toronto address and phone number on both Google Play listings), shares Phoenix's careers page (jobs.ashbyhq.com/phoenix), and, as shown below, runs on the same intake software. I've treated it as its own product with its own funnel, but this context matters for interpreting some of the findings.</p>
+
+      <div class="section-label">What I Actually Looked At</div>
+      <ul>
+        <li><b>Marketing site:</b> homepage, /about ("How Raven Works"), /weight-loss, /onboarding, fetched directly and in-browser.</li>
+        <li><b>Sign-up flow:</b> navigated the live intake quiz at patient.getraven.com/onboarding/wl/ from category selection through "assigned sex at birth," date of birth, and the first-and-last-name screen. I stopped there — no email, password, medical history, or payment info was entered, and no account was created.</li>
+        <li><b>App Store listing:</b> apps.apple.com/ca/app/raven-health-tracker/id6751854257, including its version history and rating count.</li>
+        <li><b>Google Play listing:</b> play.google.com/store/apps/details?id=com.phoenixhealth.raven.</li>
+        <li><b>Trustpilot:</b> ca.trustpilot.com/review/getraven.com, including the 1-star filter, read live in-browser.</li>
+        <li><b>Press coverage:</b> the May 20, 2026 joint BusinessWire release with Phoenix announcing generic semaglutide.</li>
+        <li><b>Reddit:</b> searched site:reddit.com getraven.com, found nothing specific to Raven to cite.</li>
+      </ul>
+      <p>What I did <b>not</b> do: create a real account, submit the medical questionnaire, enter payment details, or see Raven's internal analytics.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">The Funnel, Stage by Stage</div>
+
+      <h2 class="finding-h">1. Awareness / product page — availability claims don't match each other</h2>
+      <p>Raven's /weight-loss page states: <em>"Currently available in Ontario, BC, Alberta, New Brunswick, Newfoundland, Nova Scotia, and PEI"</em> — seven provinces, with <b>Manitoba and Saskatchewan absent</b>.</p>
+      <p>But Raven's own /about page and general FAQ state: <em>"We are currently available in Ontario, BC, Alberta, Manitoba, Saskatchewan, New Brunswick, Newfoundland, Nova Scotia, and PEI"</em> — nine provinces, Manitoba and Saskatchewan included.</p>
+      <div class="finding"><b>Finding:</b> These are two live pages on the same site, both fetched the same day, giving different lists for the same question. A visitor in Winnipeg or Saskatoon who lands on the weight-loss page specifically (which is plausibly the highest-intent entry point, given Ozempic/Wegovy/Mounjaro pricing is the homepage's lead offer) would reasonably conclude Raven isn't available to them and leave, before ever starting the quiz that would tell them otherwise.</div>
+
+      <h2 class="finding-h">2. Awareness / product page — the headline result stat doesn't match the FAQ's stat</h2>
+      <p>Homepage: <em>"On average, Raven patients lose 8.9 lbs in the first month of treatment."</em> /weight-loss FAQ, same site: <em>"How much weight can I realistically lose? ... Raven patients reported losing 13 lbs on average per month of treatment."</em></p>
+      <div class="finding"><b>Finding:</b> 8.9 lbs and 13 lbs are both described as "average," both about weight lost "per month," on two pages a visitor could plausibly read back to back. I can't tell from outside which stat is current and which is stale, but a careful visitor comparing the hero claim to the FAQ could reasonably wonder which number is real.</div>
+
+      <h2 class="finding-h">3. Sign-up / intake quiz</h2>
+      <p>I ran the live flow: category (Weight Loss / Hair Loss / Skincare / Labs) then "For the medical form, please specify your assigned sex at birth" (Male/Female) then date of birth then first and last name.</p>
+      <div class="finding"><b>Finding, directly observed:</b> I selected "Male" to see what would happen on a clinic that markets itself exclusively to women. The flow did not reject, warn, or redirect — it proceeded straight to the date-of-birth question exactly as it would for "Female." This is the same intake template Phoenix (the men's clinic) uses, verbatim, down to the "assigned sex at birth" wording. That's not necessarily a problem — the actual medical eligibility screening presumably happens later, in the provider review — but at the point of entry, nothing in the product experience itself reflects Raven's "women's clinic" positioning. I didn't continue far enough to see whether sex is used to gate eligibility later in the questionnaire or only at physician review.</div>
+
+      <h2 class="finding-h">4. Post-purchase / fulfillment and support</h2>
+      <p>A <b>verified Trustpilot review, originally posted July 12, 2026 and updated July 14</b>, titled "Beware. Zero customer support," lays out a specific sequence: three unanswered support emails; a Canada Post delivery that wasn't completed on the scheduled day, leaving a (temperature-sensitive, injectable) medication sitting until the reviewer picked it up "warm"; no advance notice of when orders ship ("They don't tell you when it's shipping so you can't make plans"); an inability to get a straight answer on pricing by message; and an unanswered question about a paid-for prescription. Raven's reply is dated <b>July 21</b>, nine days after the review, and after an update the reviewer had already added on July 14.</p>
+      <div class="finding"><b>Finding:</b> Compared to Phoenix's Trustpilot profile, which states it replies to 96% of negative reviews, Raven's profile states <b>85%</b>, and the one detailed negative review I read supports a slower response pattern. The specific failure mode here — a cold-chain-relevant medication left out after a missed delivery window, with no proactive tracking — is an operational issue, not a messaging one.</div>
+
+      <h2 class="finding-h">5. App / ongoing engagement</h2>
+      <p>Raven Health Tracker (iOS) shows only <b>2 ratings (5.0 average)</b>, not enough for the App Store to display a rating breakdown. Google Play's listing doesn't display a review count or rating at all.</p>
+      <div class="finding"><b>Finding:</b> Only <b>one version is visible in Raven's App Store version history, 1.2.3, May 21, 2026</b> ("Minor bug fixes and performance updates"), compared to Phoenix's five visible versions going back to December 16, 2025. Raven's Trustpilot profile itself shows "Claimed profile - May 2025" versus Phoenix's "Claimed profile - January 2023." Taken together (and this part is inference, not something I can verify directly): Raven looks like the newer, still-scaling sibling product — fewer app releases, fewer ratings, a shorter public track record — rather than a mature product with its own multi-year iteration history.</div>
+
+      <hr class="divider">
+
+      <div class="section-label">One Experiment I'd Run</div>
+      <div class="experiment-box">
+        <p><b>Hypothesis:</b> The province mismatch in section 1 is quietly costing Raven qualified weight-loss traffic before the funnel even starts, because a Manitoba or Saskatchewan visitor reading the /weight-loss page's "Currently available in..." line has no reason to believe the quiz applies to them.</p>
+        <p><b>What I'd test:</b> Correct the /weight-loss page to match the 9-province list on /about, then A/B test (or simply before/after compare, if traffic volume doesn't support a clean split) the rate at which visitors from Manitoba and Saskatchewan IP ranges who land on /weight-loss go on to start the intake quiz.</p>
+        <p><b>What I'd measure:</b> Quiz-start rate from MB/SK traffic on the weight-loss landing page, before vs. after the correction, over a comparable time window (ideally 2 to 4 weeks each side to average out day-of-week and campaign timing effects). If the province list really is suppressing starts, I'd expect a measurable lift with no change to anything else in the funnel — which also makes this a cheap, low-risk test to run, since the fix itself is a one-line content edit, not a redesign.</p>
+      </div>
+
+      <div class="section-label">One Growth Idea, Honestly Scoped</div>
+      <p>Raven's own onboarding quiz already asks visitors about specific life-stage transitions — the homepage quiz includes options like "Planning a wedding," "Adjusting to life with a newborn or toddler," "Actively preparing for or transitioning into retirement," and "Stepping into a primary caregiving role" — and the site already has dedicated, built landing pages for hormonally-driven weight gain: /lp/pcos-weight-loss and /lp/menopause-weight-loss, both live in the site's main navigation.</p>
+      <p>I don't know how much (if any) paid traffic currently points at those two landing pages, or how they convert relative to the generic /weight-loss page — I have no visibility into that. But the content and positioning work is already done: Raven has a genuine, evidence-based differentiator (menopause- and PCOS-driven weight gain, explicitly named in its own FAQ: <em>"Among women, obesity can be caused by genetic and hormonal factors like menopause and PCOS"</em>) that a men's clinic or a generic GLP-1 telehealth competitor can't credibly claim. Rather than proposing a new campaign from scratch, the honestly-scoped version of this idea is: if these two landing pages aren't already a deliberate, funded acquisition channel, they're a low-risk place to point incremental paid or organic effort, because the product and message-market fit already exist — the only open question, which I can't answer from outside, is whether they're converting well enough to be worth the spend.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        <a href="https://www.getraven.com/" target="_blank" rel="noreferrer">getraven.com</a> — homepage<br>
+        <a href="https://www.getraven.com/about" target="_blank" rel="noreferrer">getraven.com/about</a> — "How Raven Works"<br>
+        <a href="https://www.getraven.com/weight-loss" target="_blank" rel="noreferrer">getraven.com/weight-loss</a><br>
+        <a href="https://patient.getraven.com/onboarding/wl/" target="_blank" rel="noreferrer">patient.getraven.com/onboarding/wl/</a> — live intake flow<br>
+        <a href="https://apps.apple.com/ca/app/raven-health-tracker/id6751854257" target="_blank" rel="noreferrer">apps.apple.com — Raven Health Tracker</a><br>
+        <a href="https://play.google.com/store/apps/details?id=com.phoenixhealth.raven" target="_blank" rel="noreferrer">play.google.com — Raven Health Tracker</a><br>
+        <a href="https://ca.trustpilot.com/review/getraven.com" target="_blank" rel="noreferrer">ca.trustpilot.com/review/getraven.com</a><br>
+        <a href="https://ca.trustpilot.com/review/getraven.com?stars=1" target="_blank" rel="noreferrer">ca.trustpilot.com/review/getraven.com?stars=1</a><br>
+        <a href="https://www.businesswire.com/news/home/20260521867755/en/Phoenix-and-Raven-Become-First-Canadian-Telehealth-Platforms-to-Offer-Generic-Semaglutide-Direct-to-Patients" target="_blank" rel="noreferrer">BusinessWire — generic semaglutide launch, May 20, 2026</a>
+      </p>
+
+      <p class="meta-line" style="margin-top:28px;">Related: <a href="https://jane-natividad.github.io/phoenix.html">Phoenix funnel teardown →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
