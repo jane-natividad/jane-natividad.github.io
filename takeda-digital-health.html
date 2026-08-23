@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canada Digital Health Landscape Scan — A Closer Look | Jane Natividad</title>
+<meta name="description" content="An independent, source-cited scan of Canada's digital health landscape across five Takeda franchises, researched by Jane Natividad before applying for the Digital Health Lead role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.4vw, 38px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 620px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 520px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .franchise-tag {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-soft); padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .finding ul { margin: 8px 0 0; padding-left: 18px; }
+  .finding li { font-size: 13px; color: var(--ink); line-height: 1.65; margin-bottom: 5px; }
+  .so-what {
+    background: var(--blue-soft); border-radius: 12px; padding: 16px 18px; margin: 0 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .so-what .label {
+    color: var(--blue); text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; display: block; margin-bottom: 6px;
+  }
+  .quote {
+    border-left: 2px solid var(--blue); padding: 2px 0 2px 16px; font-style: italic;
+    color: var(--ink-soft); margin: 14px 0; font-size: 13.5px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+  .stat-pill {
+    flex: 1 1 130px; background: var(--tint); border-radius: 10px; padding: 10px 12px;
+  }
+  .stat-pill .num { font-size: 17px; font-weight: 700; color: var(--blue); line-height: 1.1; }
+  .stat-pill .lbl { font-size: 10.5px; color: var(--ink-soft); line-height: 1.35; margin-top: 3px; }
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { color: var(--ink-muted); text-decoration: underline; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+    .stat-pill { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Digital Health Market Scan · Independent Work</span>
+    <h1>Canada digital health landscape scan, five Takeda franchises, mapped before applying.</h1>
+    <p class="subline">Independently mapping where centrally-built digital health investment meets Canada's real adoption barriers, franchise by franchise, before applying for the Digital Health Lead role.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This is outside-in analysis, not insider knowledge.</strong> It's built entirely from public sources: Health Canada, CADTH/CDA-AMC, peer-reviewed literature, provincial health data, and Takeda's own public disclosures. I don't have access to Takeda's internal data, pipeline specifics, or the DLAM CoE's actual roadmap. This is an example of how I'd approach systematically scanning a market, not a claim about what Takeda is or isn't already doing internally.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Researched August 2026 &middot; Five franchise-specific landscape scans, each source-cited below. Built independently, before applying, for Takeda Canada's Digital Health Lead posting.</p>
+
+      <p>Takeda Canada operates across five therapeutic franchises, each with its own patient population, care pathway, and digital-health maturity level. Rather than write one generic "digital health matters" pitch, I scanned each franchise separately: what's already proven in Canada, what's still unvalidated, and what the specific adoption barrier is, EMR fragmentation, reimbursement gaps, provincial licensing, wait times, or something else entirely. Five one-page scans, summarized below.</p>
+
+      <div class="so-what">
+        <span class="label">Why this exists</span>
+        The posting for this role asks for someone "systematically scanning the Canadian market, identifying and evaluating potential digital health and DTx solutions... driving the implementation of relevant initiatives tailored to local needs." That's not a paraphrase, it's close to the job description's own wording. This page is what that activity actually looks like when I do it: not a general interest in digital health, but a specific, sourced, franchise-by-franchise read on where a centrally-built product would and wouldn't land in Canada, and what I'd recommend doing about it. Each section below ends with the specific "so what for Takeda," not just a market observation.
+      </div>
+
+      <hr class="divider">
+
+      <div class="franchise-tag">Gastroenterology / IBD</div>
+      <h2 class="finding-h">1. Where Takeda's own investment already points</h2>
+      <div class="stat-row">
+        <div class="stat-pill"><div class="num">320,000+</div><div class="lbl">Canadians living with IBD today</div></div>
+        <div class="stat-pill"><div class="num">470,000</div><div class="lbl">projected by 2035</div></div>
+        <div class="stat-pill"><div class="num">$9.0B</div><div class="lbl">Takeda global GI revenue, +11.6%</div></div>
+        <div class="stat-pill"><div class="num">11,000+</div><div class="lbl">new Canadian diagnoses per year</div></div>
+      </div>
+      <p>Two Canadian tools already have real evidence behind them: LyfeMD/MyGut symptom-tracking apps and IBDoc, a validated home fecal-calprotectin biomarker test. Oshi Health's virtual IBD care model is still at "watch" stage in Canada, but Takeda Digital Ventures has already invested in Oshi, which makes it the most concrete internal signal in any of the five franchises. Predictive flare-risk monitoring is earlier still, emerging rather than validated.</p>
+      <div class="finding">
+        <b>Canada-specific barriers:</b>
+        <ul>
+          <li>EMR fragmentation across provinces makes any single integration approach hard to scale nationally.</li>
+          <li>No dedicated reimbursement pathway for digital IBD tools through CDA-AMC or Quebec's INESSS.</li>
+          <li>The evidence bar for new digital tools keeps rising as more products enter the space.</li>
+          <li>Provincial licensing requirements complicate any virtual-care model that crosses provincial lines.</li>
+        </ul>
+      </div>
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        Takeda already holds a stake in Oshi Health, the highest-leverage move is likely scoping an evaluation of Oshi's care model against Canada's specific reimbursement and licensing constraints, not starting a new build.
+      </div>
+
+      <hr class="divider">
+
+      <div class="franchise-tag">Oncology</div>
+      <h2 class="finding-h">2. A playbook that already works at government scale</h2>
+      <div class="stat-row">
+        <div class="stat-pill"><div class="num">254,800</div><div class="lbl">new Canadian cancer cases, 2025</div></div>
+        <div class="stat-pill"><div class="num">5M+</div><div class="lbl">ePRO records collected in Ontario</div></div>
+        <div class="stat-pill"><div class="num">$3.7B</div><div class="lbl">Takeda global oncology revenue, +21.2%</div></div>
+        <div class="stat-pill"><div class="num">128,893</div><div class="lbl">patients in a matched-pair outcomes study</div></div>
+      </div>
+      <p>Ontario's ESAS electronic patient-reported outcomes (ePRO) program is the strongest proof point in any of the five scans: government-embedded, running at real scale (roughly 30,000 to 40,000 assessments a month, about 60% of eligible patients screened). Alberta has since layered EMR-embedded PROMs on top. An AI digital-pathology pilot is running in Timmins, and a separate multi-site study (iPEHOC) found that adoption tracked leadership and clinician confidence far more than it tracked the technology itself.</p>
+      <div class="finding">
+        <b>Canada-specific barriers:</b>
+        <ul>
+          <li>ePRO's success took roughly a decade of sustained government and clinician buy-in, not a fast software rollout.</li>
+          <li>Clinician confidence, not technical capability, was the deciding factor in the iPEHOC study across multiple sites.</li>
+          <li>Any new tool competes for attention inside a system that already runs a large, embedded ePRO program.</li>
+        </ul>
+      </div>
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        The lesson from oncology isn't "deploy better technology," it's replicating the decade-long leadership and clinician buy-in process that made ESAS work, before assuming a new tool needs to be built at all.
+      </div>
+
+      <hr class="divider">
+
+      <div class="franchise-tag">Neuroscience</div>
+      <h2 class="finding-h">3. Funded access is not the same as adoption</h2>
+      <div class="stat-row">
+        <div class="stat-pill"><div class="num">1 in 5</div><div class="lbl">Canadians affected by mental health issues yearly</div></div>
+        <div class="stat-pill"><div class="num">5.3M</div><div class="lbl">need care; roughly half go unmet</div></div>
+        <div class="stat-pill"><div class="num">6–12 mo</div><div class="lbl">average public wait for psychiatric assessment</div></div>
+        <div class="stat-pill"><div class="num">130,000+</div><div class="lbl">enrolled in Ontario's iCBT programs; ~1 in 4 completed</div></div>
+      </div>
+      <p>Ontario's two publicly funded iCBT programs (AbilitiCBT and MindBeacon) prove that funded, actively promoted access alone doesn't guarantee use, only about a quarter of enrollees completed treatment. Akili's EndeavorRx, an FDA-cleared ADHD digital therapeutic, is relevant given Takeda's Vyvanse franchise now faces generic competition, but has no confirmed Health Canada approval pathway yet. Wearable digital biomarkers are the strongest strategic fit: Takeda already runs a Koneksa Health partnership and a Japan-based Parkinson's/Apple Watch program, and its neuroscience pipeline is shifting toward narcolepsy, idiopathic hypersomnia, and rare epilepsy.</p>
+      <div class="finding">
+        <b>Canada-specific barriers:</b>
+        <ul>
+          <li>No established Health Canada pathway for digital therapeutics, unlike the FDA's De Novo route.</li>
+          <li>Wait times, not app availability, are the actual crisis; a tool needs to address triage and access, not just add another option.</li>
+          <li>The tools patients already pay for are private-pay platforms sitting outside pharma's usual channels entirely.</li>
+        </ul>
+      </div>
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        Given the pipeline shift toward rare sleep-wake and epilepsy conditions, an objective digital-biomarker strategy building on Takeda's existing Koneksa and Japan monitoring experience looks more strategically relevant than entering an already crowded, low-completion consumer mental-health app market.
+      </div>
+
+      <hr class="divider">
+
+      <div class="franchise-tag">Plasma-Derived Therapies</div>
+      <h2 class="finding-h">4. Takeda sits on both sides of this supply chain</h2>
+      <div class="stat-row">
+        <div class="stat-pill"><div class="num">&gt;70%</div><div class="lbl">of Canada's immunoglobulin supply is imported</div></div>
+        <div class="stat-pill"><div class="num">27%</div><div class="lbl">domestic sufficiency, up from ~15%</div></div>
+        <div class="stat-pill"><div class="num">+10%</div><div class="lbl">growth in Canadian Ig demand</div></div>
+        <div class="stat-pill"><div class="num">$6.9B</div><div class="lbl">Takeda global plasma revenue, +14.3%</div></div>
+      </div>
+      <p>Takeda's own BioLife Plasma Services donor-engagement app is live across 270+ US/EU centres but has no confirmed Canadian deployment yet, notable given BioLife's plasma-collection business is now expanding into Canada. Manitoba's home subcutaneous immunoglobulin (SCIG) program has run since 2007 and is well validated clinically, but isn't digitally instrumented at scale. Remote infusion monitoring is still early. Canadian Blood Services' 2024 National Immunoglobulin Shortages Management Plan is an active, live policy effort to open new domestic donor centres.</p>
+      <div class="finding">
+        <b>Canada-specific barriers:</b>
+        <ul>
+          <li>Supply, not adherence, is the binding constraint, a convenience app doesn't touch the deeper national sufficiency problem.</li>
+          <li>Thin Canadian evidence base for digital Ig-infusion monitoring specifically.</li>
+          <li>Home SCIG programs exist regionally (Manitoba), not as a national standard, the same provincial patchwork seen elsewhere.</li>
+        </ul>
+      </div>
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        Through BioLife, Takeda is both a plasma collector and a treatment provider inside an active Ontario policy debate over for-profit plasma clinics. The highest-leverage digital move here may be donor recruitment and policy engagement, not a new patient-facing app.
+      </div>
+
+      <hr class="divider">
+
+      <div class="franchise-tag">Rare Genetics &amp; Hematology</div>
+      <h2 class="finding-h">5. The tool already exists; the evidence of its use doesn't</h2>
+      <div class="stat-row">
+        <div class="stat-pill"><div class="num">1.1–1.6</div><div class="lbl">per 100,000, global HAE prevalence</div></div>
+        <div class="stat-pill"><div class="num">11 years</div><div class="lbl">average diagnostic delay reported by Canadian HAE patients</div></div>
+        <div class="stat-pill"><div class="num">$5.0B</div><div class="lbl">Takeda global rare disease revenue, +9.4%</div></div>
+        <div class="stat-pill"><div class="num">35%</div><div class="lbl">of surveyed patients had &gt;5 attacks in 6 months despite treatment</div></div>
+      </div>
+      <p>Takeda already operates myHAE, its own electronic HAE attack-diary app, in Canada via Takeda Connect and myHAEcheckup.ca, but no published Canadian usage or outcomes data exists for it. MyCBDR and myWAPPS, by contrast, are a proven model: a national bleeding-disorders registry where an infusion logged in one app instantly updates factor levels in the other, used across Canadian hemophilia treatment centres. AI-assisted rare-disease diagnosis is still at "watch" stage but is backed by the Canadian Rare Disease Network's push for harmonized screening. Takeda Canada is already running its own HAE & IBD Digital/AI Innovation Challenge, a live, public signal of exactly this kind of market-scanning activity.</p>
+      <div class="finding">
+        <b>Canada-specific barriers:</b>
+        <ul>
+          <li>Ultra-rare, geographically scattered patient populations make one-off, per-vendor EMR integration uneconomical.</li>
+          <li>An 11-year average diagnostic delay means adherence-tracking apps address the smaller half of the actual problem.</li>
+          <li>No CDA-AMC-equivalent funding pathway exists for the diagnostic or monitoring tools built around a therapy, only for the therapy itself.</li>
+        </ul>
+      </div>
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        The gap isn't building a new tool, myHAE already exists, it's connecting it to the same shared-registry logic that makes MyCBDR/myWAPPS work, and using the live Innovation Challenge to source ideas that target the real bottleneck: time to diagnosis, not treatment logging.
+      </div>
+
+      <hr class="divider">
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        <b>Gastroenterology/IBD:</b> Crohn's and Colitis Canada, PMC prevalence studies, IBDoc validation literature, Takeda Digital Ventures/Oshi Health disclosures, CDA-AMC and INESSS public guidance.<br>
+        <b>Oncology:</b> Ontario Health/Cancer Care Ontario ESAS program data, Alberta Health Services PROMs publications, iPEHOC multi-site study, Takeda financial disclosures.<br>
+        <b>Neuroscience:</b> PMC studies on Ontario's iCBT programs (AbilitiCBT, MindBeacon), Akili EndeavorRx/EndeavorOTC public materials, Takeda &amp; Koneksa Health collaboration announcements, Takeda neuroscience pipeline coverage.<br>
+        <b>Plasma-Derived Therapies:</b> Canadian Blood Services National Immunoglobulin Shortages Management Plan (2024), BioLife Plasma Services public materials, PMC studies on Manitoba SCIG home infusion.<br>
+        <b>Rare Genetics &amp; Hematology:</b> PMC/PubMed studies on Canadian HAE epidemiology and comorbidities, Canadian Bleeding Disorders Registry (MyCBDR/myWAPPS) materials, Canadian Rare Disease Network coverage, Takeda Canada HAE &amp; IBD Innovation Challenge press coverage.<br>
+        <b>Company-wide:</b> Takeda Therapeutic Focus Areas and public financial disclosures (takeda.com).
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
