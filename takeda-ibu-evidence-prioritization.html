@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBU Evidence Generation &amp; Dissemination Prioritization Framework | Jane Natividad</title>
+<meta name="description" content="An illustrative governance and weighted-scoring framework for consolidating local evidence needs into one ranked IBU voice, built by Jane Natividad before applying for the Evidence Generation and Dissemination Lead, IBU role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.4vw, 38px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 640px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 540px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-soft); padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .so-what {
+    background: var(--blue-soft); border-radius: 12px; padding: 16px 18px; margin: 0 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .so-what .label {
+    color: var(--blue); text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; display: block; margin-bottom: 6px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+
+  .flow-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 6px; counter-reset: step; }
+  .flow-step {
+    flex: 1 1 150px; background: var(--tint); border-radius: 10px; padding: 12px 13px; position: relative;
+  }
+  .flow-step .n {
+    display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px;
+    background: var(--blue); color: var(--white); font-size: 10px; font-weight: 700; border-radius: 50%; margin-bottom: 6px;
+  }
+  .flow-step .t { font-size: 12.5px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .flow-step .d { font-size: 11.5px; color: var(--ink-soft); line-height: 1.45; }
+  .flow-arrow { display: none; }
+  @media (min-width: 621px) {
+    .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-muted); font-size: 14px; flex: 0 0 10px; }
+  }
+
+  .rubric-table, .rank-table { width: 100%; border-collapse: collapse; margin: 14px 0 6px; font-size: 12.5px; }
+  .rubric-table th, .rank-table th {
+    text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+    border-bottom: 1px solid #e6e9ee; padding: 7px 8px 7px 0;
+  }
+  .rubric-table td, .rank-table td {
+    vertical-align: top; padding: 9px 8px 9px 0; border-bottom: 1px solid #f0f0f2; line-height: 1.5; color: var(--ink-soft);
+  }
+  .rubric-table td.wt, .rank-table td.score { color: var(--blue); font-weight: 700; white-space: nowrap; }
+  .rank-table td.rank { color: var(--ink); font-weight: 700; }
+  .rank-table { font-size: 12px; }
+  .rank-table th, .rank-table td { padding: 8px 6px 8px 0; }
+
+  .cta-box {
+    background: var(--ink); color: var(--white); border-radius: 14px; padding: 24px 26px; margin: 8px 0 24px;
+  }
+  .cta-box .label { color: #a9c3ea; text-transform: uppercase; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; display: block; margin-bottom: 8px; }
+  .cta-box p { color: #dbe3ee; font-size: 13.5px; line-height: 1.68; margin: 0 0 16px; }
+  .cta-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; text-decoration: none;
+    padding: 9px 16px; border-radius: 999px;
+  }
+  .cta-btn.primary { background: var(--white); color: var(--ink); }
+  .cta-btn.secondary { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+    .rubric-table, .rank-table { font-size: 11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Evidence Governance Framework · Independent Work</span>
+    <h1>An IBU evidence prioritization framework, built before applying, for a business unit that's four months old.</h1>
+    <p class="subline">A governance and weighted-scoring model for consolidating local evidence needs across 50+ IBU markets into one ranked voice feeding the global Integrated Evidence Generation Plan (IEGP).</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This is an illustrative model, not a claim about Takeda's internal process.</strong> Takeda's International Business Unit (IBU) was only consolidated as a business unit on April 1, 2026, so there is very likely no established evidence-governance framework to describe, only one to build. Everything below is built on public therapeutic-area and market information; it contains no confidential, proprietary, or real internal Takeda data. It's an example of how I'd approach designing this governance model, not a description of what Takeda is already doing.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Built August 2026 &middot; Illustrative governance and scoring framework, prepared for the Evidence Generation and Dissemination Lead, IBU posting (R0182858).</p>
+
+      <p>The role's first listed responsibility is to "design and own the IBU prioritization framework for evidence generation needs across therapeutic areas." Rather than describe how I'd approach that in a cover letter, I built the framework: a governance flow for how local evidence requests reach one ranked IBU list, a weighted scoring rubric, and a worked example applying both to six illustrative evidence priorities across five therapeutic areas.</p>
+
+      <div class="so-what">
+        <span class="label">Why this exists</span>
+        Right now, each IBU country and therapeutic area team most likely asks for evidence separately, with no shared way to decide what's worth doing, what's redundant, and what should be escalated to global. This page is what turning that scattered input into one coherent, defensible IBU voice actually looks like when I do it, not a general statement of capability, but a specific governance model and a scoring method a Prioritization Council could use on day one.
+      </div>
+
+      <hr class="divider">
+
+      <div class="tag">Governance Model</div>
+      <h2 class="finding-h">1. Local input to global representation</h2>
+      <p>Five steps carry a request from a country team's intake form to a seat at the table in global evidence generation planning.</p>
+      <div class="flow-row">
+        <div class="flow-step"><span class="n">1</span><div class="t">Local Country Teams</div><div class="d">50+ EUCAN &amp; GEM markets submit evidence needs via a standardized structured intake tool (need, population, urgency, existing data).</div></div>
+        <div class="flow-step"><span class="n">2</span><div class="t">TA Lead Consolidation</div><div class="d">Therapeutic Area Leads (Onc, GI, Neuro, Rare Disease, PDT) de-duplicate and cluster requests within their TA.</div></div>
+        <div class="flow-step"><span class="n">3</span><div class="t">IBU Prioritization Council</div><div class="d">Quarterly cross-TA review scores and ranks consolidated needs using the weighted rubric below.</div></div>
+        <div class="flow-step"><span class="n">4</span><div class="t">IBU Ranked Evidence Plan</div><div class="d">One ranked list of IBU-wide evidence and dissemination priorities, with rationale, owner, and recommended vehicle.</div></div>
+        <div class="flow-step"><span class="n">5</span><div class="t">Global IEGP Representation</div><div class="d">IBU Lead represents the ranked plan in the global evidence generation and publication forum; negotiates resourcing and alignment.</div></div>
+      </div>
+      <div class="finding">
+        <b>Feedback loop (continuous):</b> every request receives an explicit status, approved, deferred, or declined, with rationale routed back to the originating country team. That's what closes the loop and builds trust in the process, especially for a role with no formal authority over the teams submitting requests.
+      </div>
+
+      <hr class="divider">
+
+      <div class="tag">Scoring Rubric</div>
+      <h2 class="finding-h">2. A weighted rubric, not a gut call</h2>
+      <p>Each criterion is scored 1&ndash;5 by the Prioritization Council; the weighted composite (max 5.0) ranks every consolidated request across therapeutic areas on one comparable scale.</p>
+      <table class="rubric-table">
+        <tr><th>Criterion</th><th>Wt.</th><th>What it captures</th></tr>
+        <tr><td>Unmet evidence need</td><td class="wt">25%</td><td>Size of the gap between evidence that exists and what's needed for a market/clinical decision.</td></tr>
+        <tr><td>Market &amp; patient impact</td><td class="wt">20%</td><td>Number of IBU markets and patients affected if the evidence is generated.</td></tr>
+        <tr><td>HTA / payer urgency</td><td class="wt">20%</td><td>Time-sensitivity relative to upcoming HTA reviews, reassessments, or reimbursement decisions.</td></tr>
+        <tr><td>Cross-market reusability</td><td class="wt">15%</td><td>Whether one asset (study, dossier, registry) can serve multiple markets vs. one-off local use.</td></tr>
+        <tr><td>Feasibility</td><td class="wt">10%</td><td>Data availability, cost, and realistic time to execute.</td></tr>
+        <tr><td>Strategic / IEGP alignment</td><td class="wt">10%</td><td>Fit with global brand strategy and existing IEGP priorities.</td></tr>
+      </table>
+
+      <hr class="divider">
+
+      <div class="tag">Worked Example</div>
+      <h2 class="finding-h">3. Sample output: ranked IBU evidence priorities</h2>
+      <p><i>Illustrative / mock example</i> &mdash; applying the rubric to six hypothetical requests across five therapeutic areas.</p>
+      <table class="rank-table">
+        <tr><th>Rank</th><th>TA</th><th>Evidence priority</th><th>Market driver</th><th>Vehicle</th><th>Score</th></tr>
+        <tr><td class="rank">1</td><td>GI</td><td>Ulcerative colitis &mdash; RWE persistence &amp; sequencing across advanced therapies</td><td>EUCAN (DE, FR, IT) &mdash; multiple upcoming HTA re-assessments</td><td>Multi-country retrospective RWE study</td><td class="score">4.65</td></tr>
+        <tr><td class="rank">2</td><td>Rare Dis.</td><td>Hereditary angioedema &mdash; patient registry / natural history data</td><td>Central &amp; Eastern Europe access expansion</td><td>Regional patient registry</td><td class="score">3.95</td></tr>
+        <tr><td class="rank">3</td><td>Onc</td><td>Bladder cancer &mdash; regional burden-of-illness study</td><td>GEM (Brazil, Mexico, Saudi Arabia) early access</td><td>Burden-of-illness + pooled analysis</td><td class="score">3.75</td></tr>
+        <tr><td class="rank">4</td><td>Neuro</td><td>Narcolepsy &mdash; cross-market reusable HTA evidence dossier</td><td>EUCAN + GEM shared dossier need</td><td>Pooled RWE dossier</td><td class="score">3.55</td></tr>
+        <tr><td class="rank">5</td><td>GI</td><td>Celiac / Crohn's &mdash; digital PRO program via patient support program data</td><td>EUCAN digital health expansion</td><td>PSP-linked PRO study</td><td class="score">3.50</td></tr>
+        <tr><td class="rank">6</td><td>PDT</td><td>Primary immunodeficiency &mdash; consolidated registry &amp; publication plan</td><td>EUCAN + GEM &mdash; eliminates 3 duplicate local studies</td><td>Consolidated publication plan</td><td class="score">3.15</td></tr>
+      </table>
+
+      <div class="so-what">
+        <span class="label">So what for Takeda</span>
+        This is the artifact a Prioritization Council could start using in its first quarterly review, not a concept to workshop from scratch. The rubric already reflects the JD's five critical capabilities directly: unmet need and market impact map to strategic prioritization, the governance flow above is the governance design, the Council structure is matrix influence without direct authority, IEGP alignment is the enterprise perspective, and cross-market reusability is cross-market collaboration.
+      </div>
+
+      <hr class="divider">
+
+      <div class="cta-box">
+        <span class="label">Try the working version</span>
+        <p>This page is the Takeda-specific application of a weighted-scoring engine I built and keep as a general-purpose, publicly reusable tool, not branded to any one employer. The live version recomputes every ranking instantly as you adjust the six criteria weights: fully deterministic and inspectable, no model in the scoring loop, so every position traces back to the underlying scores and weights. AI is used only to structure messy free-text intake into a comparable record; the ranking itself stays human-auditable, which is the credibility a governance role like this one needs.</p>
+        <div class="cta-links">
+          <a class="cta-btn primary" href="https://evidence-prioritization-copilot.vercel.app/" target="_blank" rel="noopener">Try the live demo →</a>
+          <a class="cta-btn secondary" href="https://github.com/jane-natividad/evidence-prioritization-copilot" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="section-label">Disclaimer</div>
+      <p class="sources">
+        Illustrative model built for application purposes using publicly available Takeda therapeutic-area and market information. Contains no confidential, proprietary, or real internal Takeda data. Prepared by Jane Natividad for the Evidence Generation and Dissemination Lead, IBU role (R0182858).
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
