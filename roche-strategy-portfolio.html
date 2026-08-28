@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Should Early-Stage R&D Place Its Next Bet? — Jane Natividad</title>
+<meta name="description" content="A weighted-scoring work sample applying portfolio-prioritization thinking to a real, public early-R&D trade-off.">
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --accent: #0071e3;
+    --accent-soft: #e8f2ff;
+    --accent-border: #cce2ff;
+    --ink: #1d1d1f;
+    --ink-soft: #48484a;
+    --muted: #6e6e73;
+    --hairline: #e5e5e7;
+    --panel: #f5f5f7;
+    --bg: #ffffff;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  .eyebrow { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 14px; line-height: 1.15; text-wrap: balance; }
+  .byline { font-size: 12.8px; color: var(--muted); margin: 0 0 28px; }
+  .byline a { color: var(--muted); }
+  p { font-size: 14.5px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 16px; }
+  .lede { font-size: 15.5px; line-height: 1.6; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 20px 24px; margin: 0 0 32px; }
+  .section-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 16px; }
+  .disclosure { font-size: 11.5px; line-height: 1.55; color: var(--muted); background: var(--panel); border-radius: 10px; padding: 12px 16px; margin: 0 0 36px; }
+
+  .weights { display: flex; flex-direction: column; gap: 18px; margin: 0 0 36px; padding: 22px 24px; background: var(--panel); border-radius: 14px; }
+  .weight-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px 14px; }
+  .weight-row label { font-size: 12.8px; font-weight: 600; color: var(--ink); }
+  .weight-row .val { font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; text-align: right; min-width: 34px; }
+  .weight-row input[type="range"] {
+    grid-column: 1 / -1; -webkit-appearance: none; appearance: none;
+    width: 100%; height: 4px; border-radius: 2px; background: var(--hairline); outline: none;
+  }
+  .weight-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%; background: var(--accent);
+    border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent-border); cursor: pointer;
+  }
+  .weight-row input[type="range"]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%; background: var(--accent);
+    border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent-border); cursor: pointer;
+  }
+  .weight-total { font-size: 11.3px; color: var(--muted); text-align: right; }
+  .weight-total.balanced { color: var(--accent); }
+  .reset-btn {
+    align-self: flex-start; font-size: 11.5px; font-weight: 600; color: var(--accent);
+    background: #fff; border: 1px solid var(--accent-border); border-radius: 999px;
+    padding: 6px 14px; cursor: pointer;
+  }
+  .reset-btn:hover { background: var(--accent-soft); }
+
+  .bets { display: flex; flex-direction: column; gap: 14px; margin: 0 0 36px; }
+  .bet { padding: 18px 20px; border: 1px solid var(--hairline); border-radius: 14px; transition: border-color 0.2s ease; }
+  .bet.top { border-color: var(--accent-border); background: var(--accent-soft); }
+  .bet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .bet-name { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .bet-score { font-size: 15px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bet-desc { font-size: 12.3px; color: var(--ink-soft); line-height: 1.5; margin: 0 0 10px; }
+  .bar-track { height: 7px; background: var(--hairline); border-radius: 999px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.25s ease; }
+  .bet-rank { font-size: 10.3px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .bet.top .bet-rank { color: var(--accent); }
+
+  .criteria-note { font-size: 11.8px; line-height: 1.6; color: var(--muted); margin: 0 0 36px; }
+  .criteria-note dt { font-weight: 600; color: var(--ink-soft); display: inline; }
+  .criteria-note dd { display: inline; margin: 0; }
+  .criteria-note dd::after { content: "  "; }
+
+  .why { font-size: 13.3px; font-style: italic; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 18px 22px; margin: 0 0 40px; line-height: 1.58; }
+
+  footer { border-top: 1px solid var(--hairline); padding-top: 20px; font-size: 12px; color: var(--muted); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 40px 18px 60px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Portfolio Prioritization — Work Sample</div>
+  <h1>Where should early-stage R&amp;D place its next bet?</h1>
+  <p class="byline">Jane Natividad, PhD &nbsp;&middot;&nbsp; <a href="https://jane-natividad.github.io">jane-natividad.github.io</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/jane-natividad/">linkedin.com/in/jane-natividad</a></p>
+
+  <div class="lede">
+    Every early-R&amp;D leadership team is running some version of this call right now: given finite discovery capacity, how much incremental investment goes toward a hot, fast-moving therapeutic area versus doubling down on the disease areas you already have platform depth in? There usually isn't a single right answer &mdash; there's a right answer <em>for a given set of priorities</em>. This tool doesn't pick a winner. It makes the trade-off explicit, so the argument moves from "my program vs. yours" to "here's what we're actually optimizing for."
+  </div>
+
+  <div class="section-label">Set the priorities</div>
+  <div class="weights" id="weights"></div>
+
+  <div class="section-label">Resulting ranking</div>
+  <div class="bets" id="bets"></div>
+
+  <dl class="criteria-note">
+    <dt>Unmet need</dt><dd>— how far current standard of care falls short.</dd>
+    <dt>Tractability</dt><dd>— probability of technical success given today's biology and modality maturity.</dd>
+    <dt>Differentiation</dt><dd>— competitive white space rather than a crowded field.</dd>
+    <dt>Platform fit</dt><dd>— how much existing capability, translational infrastructure, and internal expertise this leverages.</dd>
+    <dt>Speed to proof-of-concept</dt><dd>— how quickly a bet can be de-risked or killed.</dd>
+  </dl>
+
+  <div class="why">
+    "The scores behind each bet are fixed &mdash; what moves is how much weight leadership puts on each criterion. Slide 'unmet need' to the top and neuroscience wins even though it's slower and harder. Slide 'speed to proof-of-concept' up and the calculus flips. Neither is wrong. The job isn't finding the answer, it's getting research, market access, and finance to agree on the weights before the debate starts &mdash; so the ranking is trusted, not argued with."
+  </div>
+
+  <div class="disclosure">
+    Illustrative work sample, not a Roche or third-party confidential document. The four therapeutic bets reflect publicly known industry dynamics (including Roche's own public Carmot Therapeutics acquisition in the metabolic space); the underlying 0&ndash;10 scores are directional judgment calls made for demonstration purposes, not internal pRED data.
+  </div>
+
+  <footer>
+    Built as a work sample for Roche pRED's Strategy &amp; Portfolio Leader role (Job ID 202607-117106), in the same spirit as the deterministic weighted-scoring engine on the <a href="https://jane-natividad.github.io">main portfolio</a>. No frameworks, no build step &mdash; a static page and about 90 lines of JavaScript.
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var CRITERIA = [
+    { key: "need",  label: "Unmet medical need" },
+    { key: "tract", label: "Scientific tractability" },
+    { key: "diff",  label: "Competitive differentiation" },
+    { key: "fit",   label: "Platform fit" },
+    { key: "speed", label: "Speed to proof-of-concept" }
+  ];
+
+  var BETS = [
+    {
+      name: "Metabolic & cardiometabolic expansion",
+      desc: "Next-generation GLP-1 / amylin combinations building on validated mechanisms and recent in-licensed assets.",
+      scores: { need: 6, tract: 8, diff: 3, fit: 8, speed: 8 }
+    },
+    {
+      name: "Neurodegeneration",
+      desc: "Next-wave targets beyond amyloid clearance, in a field still searching for its second validated mechanism.",
+      scores: { need: 9, tract: 4, diff: 6, fit: 7, speed: 3 }
+    },
+    {
+      name: "Immunology & autoimmune disease",
+      desc: "Deeper investment in inflammatory and autoimmune targets adjacent to existing biologics platforms.",
+      scores: { need: 7, tract: 7, diff: 5, fit: 8, speed: 6 }
+    },
+    {
+      name: "Retinal & ophthalmic disease",
+      desc: "Follow-on innovation in a therapeutic area with an established internal franchise and delivery platform.",
+      scores: { need: 6, tract: 7, diff: 7, fit: 7, speed: 6 }
+    }
+  ];
+
+  var DEFAULT_WEIGHT = Math.round(100 / CRITERIA.length);
+  var weights = {};
+  CRITERIA.forEach(function (c) { weights[c.key] = DEFAULT_WEIGHT; });
+
+  var weightsEl = document.getElementById("weights");
+  var betsEl = document.getElementById("bets");
+
+  function buildWeightRow(c) {
+    var row = document.createElement("div");
+    row.className = "weight-row";
+
+    var label = document.createElement("label");
+    label.textContent = c.label;
+    label.setAttribute("for", "w-" + c.key);
+
+    var val = document.createElement("span");
+    val.className = "val";
+    val.id = "v-" + c.key;
+
+    var input = document.createElement("input");
+    input.type = "range";
+    input.min = "0";
+    input.max = "100";
+    input.step = "1";
+    input.value = weights[c.key];
+    input.id = "w-" + c.key;
+    input.addEventListener("input", function () {
+      weights[c.key] = parseInt(input.value, 10);
+      render();
+    });
+
+    row.appendChild(label);
+    row.appendChild(val);
+    row.appendChild(input);
+    return row;
+  }
+
+  CRITERIA.forEach(function (c) { weightsEl.appendChild(buildWeightRow(c)); });
+
+  var totalRow = document.createElement("div");
+  totalRow.className = "weight-total";
+  totalRow.id = "weight-total";
+  weightsEl.appendChild(totalRow);
+
+  var resetBtn = document.createElement("button");
+  resetBtn.className = "reset-btn";
+  resetBtn.type = "button";
+  resetBtn.textContent = "Reset to equal weights";
+  resetBtn.addEventListener("click", function () {
+    CRITERIA.forEach(function (c) {
+      weights[c.key] = DEFAULT_WEIGHT;
+      document.getElementById("w-" + c.key).value = DEFAULT_WEIGHT;
+    });
+    render();
+  });
+  weightsEl.appendChild(resetBtn);
+
+  function weightedScore(bet, totalWeight) {
+    if (totalWeight <= 0) return 0;
+    var sum = 0;
+    CRITERIA.forEach(function (c) {
+      sum += bet.scores[c.key] * weights[c.key];
+    });
+    return sum / totalWeight;
+  }
+
+  function render() {
+    var totalWeight = CRITERIA.reduce(function (s, c) { return s + weights[c.key]; }, 0);
+
+    CRITERIA.forEach(function (c) {
+      document.getElementById("v-" + c.key).textContent = weights[c.key] + "%";
+    });
+    var totalEl = document.getElementById("weight-total");
+    totalEl.textContent = "Total weight: " + totalWeight + "%" + (totalWeight === 100 ? " — balanced" : " (doesn't need to sum to 100 — relative weight is what matters)");
+    totalEl.className = "weight-total" + (totalWeight === 100 ? " balanced" : "");
+
+    var scored = BETS.map(function (bet) {
+      return { bet: bet, score: weightedScore(bet, totalWeight) };
+    }).sort(function (a, b) { return b.score - a.score; });
+
+    var maxScore = scored.length ? scored[0].score : 1;
+
+    betsEl.innerHTML = "";
+    scored.forEach(function (item, i) {
+      var el = document.createElement("div");
+      el.className = "bet" + (i === 0 ? " top" : "");
+
+      var rank = document.createElement("div");
+      rank.className = "bet-rank";
+      rank.textContent = "Rank " + (i + 1);
+
+      var head = document.createElement("div");
+      head.className = "bet-head";
+      var name = document.createElement("div");
+      name.className = "bet-name";
+      name.textContent = item.bet.name;
+      var score = document.createElement("div");
+      score.className = "bet-score";
+      score.textContent = item.score.toFixed(1) + " / 10";
+      head.appendChild(name);
+      head.appendChild(score);
+
+      var desc = document.createElement("div");
+      desc.className = "bet-desc";
+      desc.textContent = item.bet.desc;
+
+      var track = document.createElement("div");
+      track.className = "bar-track";
+      var fill = document.createElement("div");
+      fill.className = "bar-fill";
+      fill.style.width = (maxScore > 0 ? (item.score / maxScore) * 100 : 0) + "%";
+      track.appendChild(fill);
+
+      el.appendChild(rank);
+      el.appendChild(head);
+      el.appendChild(desc);
+      el.appendChild(track);
+      betsEl.appendChild(el);
+    });
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
