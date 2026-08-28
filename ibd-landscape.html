@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An IBD Evidence &amp; Patient Landscape Map | Jane Natividad</title>
+<meta name="description" content="A public evidence map of CDED/Modulen trials beyond the two headline RCTs, a guideline-grounded Crohn's disease care pathway, and a patient-advocacy landscape across five markets — built by Jane Natividad before applying for Nestlé's Global Marketing Lead, IBD & Modulen Brand Lead role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+    --green: #3f8f6f;
+    --green-soft: #eaf5f0;
+    --amber: #b8823c;
+    --amber-soft: #faf1e4;
+    --grey: #7c8290;
+    --grey-soft: #eef0f3;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 840px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 840px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 92px 28px 44px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4vw, 34px); line-height: 1.24; letter-spacing: -0.022em; font-weight: 600;
+    max-width: 700px; margin: 0 auto 16px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 600px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 44px; text-align: center; }
+  .note {
+    max-width: 660px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 760px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-soft); padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .so-what {
+    background: var(--blue-soft); border-radius: 12px; padding: 16px 18px; margin: 0 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .so-what .label {
+    color: var(--blue); text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; display: block; margin-bottom: 6px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+
+  .flow-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 6px; }
+  .flow-step {
+    flex: 1 1 128px; background: var(--tint); border-radius: 10px; padding: 12px 13px; position: relative;
+  }
+  .flow-step.decision { background: var(--blue-soft); }
+  .flow-step .n {
+    display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px;
+    background: var(--blue); color: var(--white); font-size: 10px; font-weight: 700; border-radius: 50%; margin-bottom: 6px;
+  }
+  .flow-step .t { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .flow-step .d { font-size: 11px; color: var(--ink-soft); line-height: 1.42; }
+
+  .rank-table { width: 100%; border-collapse: collapse; margin: 14px 0 6px; font-size: 12px; }
+  .rank-table th {
+    text-align: left; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+    border-bottom: 1px solid #e6e9ee; padding: 7px 8px 7px 0;
+  }
+  .rank-table td {
+    vertical-align: top; padding: 9px 8px 9px 0; border-bottom: 1px solid #f0f0f2; line-height: 1.5; color: var(--ink-soft);
+  }
+  .rank-table td.strong { color: var(--ink); font-weight: 700; }
+  .rank-table .pill { display: inline-block; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+  .pill.live { background: var(--green-soft); color: var(--green); }
+  .pill.gap { background: var(--amber-soft); color: var(--amber); }
+  .pill.blue { background: var(--blue-soft); color: var(--blue); }
+  .pill.grey { background: var(--grey-soft); color: var(--grey); }
+
+  .evidence-scale { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 22px; font-size: 11px; color: var(--ink-soft); }
+  .evidence-scale span { background: var(--tint); border-radius: 999px; padding: 4px 11px; }
+
+  .reg-callout {
+    background: var(--amber-soft); border-radius: 12px; padding: 16px 18px; margin: 20px 0;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .reg-callout .label {
+    color: var(--amber); text-transform: uppercase; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; display: block; margin-bottom: 6px;
+  }
+
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { word-break: break-word; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 60px 24px 32px; }
+    .article-card { padding: 26px 22px 22px; }
+    .rank-table { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Evidence &amp; Patient Landscape Map · Independent Work Sample</span>
+    <h1>Beyond the two headline trials: the fuller CDED evidence base, where it sits in guideline care pathways, and who patients actually turn to.</h1>
+    <p class="subline">A companion piece to my Evidence-to-Claim Brand Brief — mapping the wider public trial landscape around Modulen® and the Crohn's Disease Exclusion Diet, where that evidence sits in published care pathways, the patient-advocacy organizations a launch would need market by market, and where global IBD epidemiology points for what comes after the UK and Canada.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This is an illustrative landscape map, not a systematic review and not a claim about Nestlé's internal evidence strategy.</strong> I searched PubMed-indexed journals, ClinicalTrials.gov-linked trial registrations (via sponsor documents and secondary listings, since clinicaltrials.gov itself blocks automated fetching), and each organization's own public materials. Where I couldn't confirm a specific number, I've said so rather than estimated. Nothing here has been reviewed by Nestlé Medical Affairs, and it's a snapshot as of August 2026, not a live-maintained database.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Built August 2026 &middot; Companion to the <a href="https://jane-natividad.github.io/modulen.html">Evidence-to-Claim Brand Brief</a> and <a href="https://jane-natividad.github.io/modulife.html">ModuLife funnel teardown</a>, prepared for the Global Marketing Lead, Inflammatory Bowel Diseases &amp; Modulen® Brand Lead posting, Nestlé Nutrition &amp; Health (Vevey).</p>
+
+      <p>The brand brief builds one claim from two trials. But a brand strategist translating "evidence... into relevant patient, customer and business insights" needs the full shape of the evidence base, not just its two strongest data points — including the trials that don't involve Modulen at all, since those are the competitive and guideline context the claim actually has to hold up against. This page is that fuller map, plus two things a claim alone doesn't cover: where this evidence actually sits in a real Crohn's care pathway, and which patient organizations a market-access or advocacy plan would need to engage.</p>
+
+      <hr class="divider">
+
+      <div class="tag">Evidence Map</div>
+      <h2 class="finding-h">1. The wider CDED / Modulen trial landscape</h2>
+      <p>Eleven studies and registered trials found, spanning foundational RCTs, maintenance evidence, real-world data, an active EU adaptation trial, and — importantly — a 2025 trial testing a formula-free competitor to the CDED+PEN approach entirely.</p>
+
+      <div class="evidence-scale">
+        <span><b>Tier 1</b> — RCT, primary endpoint met/reported</span>
+        <span><b>Tier 2</b> — real-world / comparative, non-randomized or secondary</span>
+        <span><b>Tier 3</b> — mechanistic / biomarker substudy</span>
+        <span><b>In progress</b> — registered, not yet reporting</span>
+      </div>
+
+      <table class="rank-table">
+        <tr><th>Study</th><th>Design &amp; population</th><th>Modulen/PEN?</th><th>Key finding</th><th>Tier</th></tr>
+        <tr><td class="strong">Levine 2019<br><i>Gastroenterology</i></td><td>RCT, pediatric (4&ndash;18), N=78, Israel+Canada</td><td><span class="pill live">Yes</span></td><td>75.6% vs. 45.1% sustained remission at wk 12 (p=0.01)</td><td><span class="pill blue">Tier 1</span></td></tr>
+        <tr><td class="strong">Yanai 2022<br><i>Lancet Gastroenterol Hepatol</i></td><td>RCT, adult (18&ndash;55), N=40, Israel</td><td><span class="pill live">Yes</span></td><td>35% endoscopic remission at wk 24; CDED works with or without PEN</td><td><span class="pill blue">Tier 1</span></td></tr>
+        <tr><td class="strong">Sigall Boneh 2024<br><i>Clin Gastroenterol Hepatol</i></td><td>RCT, pediatric maintenance, multi-country</td><td><span class="pill live">Yes</span></td><td>2wk EEN&rarr;CDED+PEN maintained remission to wk 24; underpowered vs. 8wk EEN for superiority</td><td><span class="pill blue">Tier 1</span></td></tr>
+        <tr><td class="strong">CD-HOPE (2025)<br><i>Lancet Gastroenterol Hepatol</i></td><td>RCT, pediatric maintenance, France (GETAID pédiatrique)</td><td><span class="pill grey">Partial</span></td><td>Cyclic EEN vs. PEN for long-term drug-free remission &mdash; exact figures not publicly confirmed by me</td><td><span class="pill blue">Tier 1</span></td></tr>
+        <tr><td class="strong">Niseteo 2022<br><i>Nutr Clin Pract</i></td><td>Real-world retrospective, modified CDED</td><td><span class="pill live">Yes</span></td><td>Modified CDED "equally effective" as EEN outside trial conditions</td><td><span class="pill grey">Tier 2</span></td></tr>
+        <tr><td class="strong">Landorf 2024<br><i>J Pediatr Gastroenterol Nutr</i></td><td>Comparative, formula-substitution study</td><td><span class="pill live">Yes</span></td><td>Formula modifications to CDED don't reduce therapy success</td><td><span class="pill grey">Tier 2</span></td></tr>
+        <tr><td class="strong">CD-EDEN<br>(NCT05606419, Greece)</td><td>RCT, adult, 3-arm (CDED+PEN / PEN+usual care / CDED+early dairy)</td><td><span class="pill live">Yes</span></td><td>Completed; results not yet publicly indexed as of this research</td><td><span class="pill grey">In progress</span></td></tr>
+        <tr><td class="strong">Nordic CDED adaptation<br>(NCT07334340, Sweden)</td><td>RCT vs. historical + registry controls, pediatric, N=60 target</td><td><span class="pill live">Yes</span></td><td>Testing a Nordic-adapted CDED; expanding to 5 Swedish sites from June 2026</td><td><span class="pill grey">In progress</span></td></tr>
+        <tr><td class="strong">Microbiome substudy<br><i>Crohn's &amp; Colitis 360</i></td><td>Mechanistic, adult + pediatric microbiome analysis</td><td><span class="pill live">Yes</span></td><td>Identifies microbial predictors of sustained CDED remission</td><td><span class="pill grey">Tier 3</span></td></tr>
+        <tr><td class="strong">TASTI-MM (2025)<br><i>Gastroenterology</i></td><td>RCT, pediatric/young adult (7&ndash;25), N=83</td><td><span class="pill gap">No &mdash; formula-free</span></td><td>Whole-food diet: 88% vs. 52% tolerability, 56% vs. 38% remission vs. EEN &mdash; explicitly "no formula" needed</td><td><span class="pill blue">Tier 1</span></td></tr>
+        <tr><td class="strong">Scoping review (2026)<br><i>J Nutrition</i></td><td>Evidence synthesis across children + adults</td><td><span class="pill grey">N/A</span></td><td>Synthesizes CDED evidence base to date</td><td><span class="pill grey">Synthesis</span></td></tr>
+      </table>
+
+      <div class="so-what">
+        <span class="label">So what</span>
+        Two findings matter more than the row count. First, the evidence base is still actively growing in exactly the direction a brand needs it to: from single-center pilots toward multi-country maintenance data (CD-HOPE, Sigall Boneh 2024) and a live EU adaptation trial (Sweden). Second, and less comfortable: <b>TASTI-MM is a real, published, 2025 RCT showing a formula-free diet beating EEN on tolerability, with no Modulen or commercial formula required at all.</b> That's not a reason to panic — CDED+PEN's own tolerability edge over EEN is arguably a bigger, better-replicated result — but it is a genuine, citable competitive signal that a "diet without a formula" pathway is gaining its own trial evidence, and a claim built only on today's numbers should account for it.
+      </div>
+
+      <div class="reg-callout">
+        <span class="label">Where this sits in guidelines today</span>
+        The 2021 ECCO&ndash;ESPGHAN pediatric Crohn's guideline recommends exclusive enteral nutrition (EEN) as first-line induction therapy (Level of Evidence 2, 92% panel agreement). It names CDED+PEN explicitly as a more tolerable emerging alternative with a higher proportion reaching sustained remission at week 12 in head-to-head testing — but states plainly that "replication studies, including data on mucosal healing, are required before strong recommendations can be made." In other words: CDED+Modulen is a real, guideline-acknowledged option today, not yet a guideline-mandated first-line one. That's the honest evidentiary position any HCP-facing claim should be built on.
+      </div>
+
+      <hr class="divider">
+
+      <div class="tag">Care Pathway</div>
+      <h2 class="finding-h">2. Where CDED+Modulen sits in the Crohn's patient journey</h2>
+      <p>A simplified pathway from symptom onset to maintenance, built from the ECCO&ndash;ESPGHAN pediatric guideline and general UK/EU Crohn's management practice (NICE NG129) — not a substitute for either document.</p>
+
+      <div class="flow-row">
+        <div class="flow-step"><span class="n">1</span><div class="t">Symptoms &amp; primary care</div><div class="d">Diarrhoea, pain, weight loss, fatigue prompt a GP visit; blood/faecal calprotectin testing.</div></div>
+        <div class="flow-step"><span class="n">2</span><div class="t">GI referral &amp; workup</div><div class="d">Colonoscopy, biopsy, imaging confirm diagnosis and disease location/severity.</div></div>
+        <div class="flow-step decision"><span class="n">3</span><div class="t">Induction decision</div><div class="d">Steroids, EEN/CDED+PEN (esp. children, mild&ndash;moderate disease), or biologics for more severe disease.</div></div>
+        <div class="flow-step"><span class="n">4</span><div class="t">Remission achieved</div><div class="d">Symptom + biomarker (calprotectin) + ideally endoscopic/mucosal confirmation.</div></div>
+        <div class="flow-step decision"><span class="n">5</span><div class="t">Maintenance</div><div class="d">Biologics, immunomodulators, or emerging diet-based maintenance (CD-HOPE, Sigall Boneh 2024).</div></div>
+        <div class="flow-step"><span class="n">6</span><div class="t">Monitoring &amp; relapse</div><div class="d">Ongoing calprotectin/endoscopy; relapse loops back to step 3. Surgery for structuring/fistulizing disease.</div></div>
+      </div>
+
+      <div class="so-what">
+        <span class="label">So what</span>
+        CDED+Modulen's strongest, most guideline-supported foothold is step 3 (induction, especially in children with mild-to-moderate disease) — exactly where the Levine 2019 evidence sits. Step 5 (maintenance) is where the newest evidence (CD-HOPE, Sigall Boneh 2024) is pointing next, but it's also the step furthest from a strong guideline recommendation today. A brand strategy that leads with maintenance claims would be running ahead of the evidence; one that owns induction hard and signals maintenance as "the next data readout" is the sequencing the evidence actually supports.
+      </div>
+
+      <hr class="divider">
+
+      <div class="tag">Patient Advocacy Landscape</div>
+      <h2 class="finding-h">3. Who patients actually turn to, market by market</h2>
+      <p>The organizations a Medical Affairs / patient-advocacy partnership plan would realistically need to engage in the same five markets already covered in the brand brief and footprint map.</p>
+
+      <table class="rank-table">
+        <tr><th>Market</th><th>Organization</th><th>Founded</th><th>Scale</th></tr>
+        <tr><td class="strong">United States</td><td>Crohn's &amp; Colitis Foundation</td><td>1965/67</td><td>30+ regional chapters; $500M+ raised for research to date</td></tr>
+        <tr><td class="strong">United Kingdom</td><td>Crohn's &amp; Colitis UK</td><td>Charity #1117148</td><td>~1 in 120 people in the UK live with Crohn's or colitis; 25,000 newly diagnosed per year</td></tr>
+        <tr><td class="strong">Germany</td><td>DCCV e.V.</td><td>&mdash;</td><td>Reported ~20,000 members ("fast 20.000 Betroffenen")</td></tr>
+        <tr><td class="strong">Canada</td><td>Crohn's and Colitis Canada</td><td>&mdash;</td><td>Serves 320,000+ Canadians with IBD; $150M+ invested in research; annual "Gutsy Walk" fundraiser</td></tr>
+        <tr><td class="strong">France</td><td>afa Crohn RCH France</td><td>1982</td><td>22 regional delegations; the only French association wholly devoted to IBD patient support and research</td></tr>
+        <tr><td class="strong">Pan-Europe</td><td>EFCCA</td><td>&mdash;</td><td>29 national patient associations across 28 European countries, plus 3 associate members outside Europe</td></tr>
+      </table>
+
+      <div class="so-what">
+        <span class="label">So what</span>
+        Six of ModuLife's nine live markets (Germany, France, Netherlands, Italy, Poland, Spain) sit inside EFCCA's 28-country federation — meaning a single pan-European advocacy relationship could plausibly support HCP and patient education across most of the program's existing European footprint, while the UK and Canada each need their own national relationship built from scratch alongside the regulatory work in the launch-sequence brief. That's one more reason those two markets are a heavier lift than "just" translating a website.
+      </div>
+
+      <hr class="divider">
+
+      <div class="tag">Middle East &amp; Emerging Markets</div>
+      <h2 class="finding-h">4. The Middle East channel, and where epidemiology points next</h2>
+      <p><b>On the Middle East hospital-channel question:</b> I couldn't confirm it either way from public sources, and I'd rather say that plainly than guess. Modulen's Middle East product pages (nestlehealthscience-me.com, nestle-family.com) sit behind an "I am a healthcare professional" gate, which is consistent with institutional/clinical-channel distribution — but a gate is a marketing-page pattern, not proof of a bulk hospital-tender supply model. I found no public tender records, wholesale contracts, or pack-size data confirming bulk/institutional sales specifically. That's a real open question a Market Access briefing in this role would need to answer with internal data, not something I can responsibly claim from outside.</p>
+
+      <p><b>What I could confirm: the Gulf's patient-advocacy infrastructure is real, but young.</b> The UAE IBD Society launched on World IBD Day, May 19, 2021 — founded by a practicing gastroenterologist (Dr. Maryam Al Khatry) under UAE Ministry of Community Development patronage. Saudi Arabia's equivalent is earlier-stage: public sources describe "steps towards" a Crohn's &amp; Colitis Foundation of Saudi Arabia, built out of an IBD patient registry rather than an established foundation yet. Both are younger and less resourced than the five-market table in section 3 — a real signal for how a Gulf engagement plan would need to look (co-building awareness alongside a young organization, not distributing through an established one).</p>
+
+      <div class="finding"><b>One number worth flagging, not trusting outright:</b> a 2021 UAE news report on the IBD Society's launch cited "between two and four percent of the UAE population" as having IBD. That's roughly 5&ndash;10x even the highest published national IBD prevalence rates anywhere in the world (the Gastroenterology Advisor and Frontiers data below put Western Europe/North America, the current global ceiling, well under 1%). I'm including the figure because it's what the source says, not because I believe it — it reads like a media misstatement (possibly conflating IBD with IBS, or a much narrower sub-population), and I'd want it re-verified against an actual epidemiological study before it appeared in anything real.</div>
+
+      <p><b>On age groups and where global IBD incidence is actually accelerating:</b> Kaplan's "four epidemiological stages" framework (<i>Nat Rev Gastroenterol Hepatol</i>, 2021) places Western nations — including all five in section 3's table — in "compounding prevalence," heading toward "prevalence equilibrium," with over 1% of their populations projected to live with IBD within a decade (2025 update to the same framework). Newly industrializing regions — much of Asia, Latin America, and parts of the Middle East/North Africa — sit further back, in "acceleration in incidence," projected to shift toward compounding prevalence over the next two decades, not overnight.</p>
+
+      <p>A 2025 global-burden analysis of pediatric/adolescent IBD (1990&ndash;2021) sharpens that regional picture with real numbers: <b>East Asia is the fastest-accelerating region specifically for pediatric-onset IBD</b> (+2.01%/year), while North America is now declining (&minus;1.07%/year) as its pediatric incidence plateaus. By age band, 15&ndash;19-year-olds account for 42.6% of incident pediatric/adolescent cases globally — the single largest group, and one that overlaps closely with the Levine 2019 trial population itself (ages 4&ndash;18, mean 14.2).</p>
+
+      <table class="rank-table">
+        <tr><th>Region / market</th><th>Epidemiological signal</th><th>Patient-advocacy infrastructure</th><th>Modulen® / ModuLife® today</th></tr>
+        <tr><td class="strong">Brazil</td><td>Latin America moving from acceleration toward compounding prevalence</td><td>ABCD (Associação Brasileira de Colite Ulcerativa e Doença de Crohn) — active national org</td><td><span class="pill live">ModuLife live</span> (mymodulife.com.br)</td></tr>
+        <tr><td class="strong">UAE</td><td>Gulf region in acceleration stage</td><td>UAE IBD Society, active since 2021</td><td><span class="pill live">ModuLife live</span> (regional ME site)</td></tr>
+        <tr><td class="strong">Saudi Arabia</td><td>Gulf region in acceleration stage</td><td>CCFSA — registry-stage, not yet an established foundation</td><td><span class="pill live">ModuLife live</span> (regional ME site)</td></tr>
+        <tr><td class="strong">East Asia (illustrative)</td><td>Fastest-rising pediatric IBD incidence of any region tracked (+2.01%/yr)</td><td><span class="pill gap">Not confirmed in this research</span></td><td><span class="pill gap">No presence found</span></td></tr>
+        <tr><td class="strong">Mexico</td><td><i>Caution:</i> reports the lowest pediatric IBD incidence in the same 2025 dataset (0.06/100,000) — "Latin America" isn't one epidemiological story</td><td>Not researched here</td><td><span class="pill gap">No presence found</span></td></tr>
+      </table>
+
+      <div class="so-what">
+        <span class="label">So what</span>
+        These aren't the same kind of gap as the UK and Canada in section 3 — those have the regulatory pathway, the reimbursement precedent, and the formula already on pharmacy shelves; the missing piece is specifically the branded program. Brazil, the UAE, and Saudi Arabia are a step behind that: the formula and a young advocacy partner already exist, but the epidemiological case is still building, not built. East Asia is a step behind again — the single strongest epidemiological signal in this whole page, and I found no Modulen presence and no confirmed patient-org partner to build on, which makes it a real research question for this role, not a launch candidate yet. Mexico is here as a reminder to check the country, not the continent, before calling anywhere "emerging."
+      </div>
+
+      <div class="section-label">Disclaimer</div>
+      <p class="sources">
+        Illustrative evidence and landscape map built from published literature, publicly listed trial registrations, guideline documents, and patient-organization public materials, for application purposes. Not a systematic review, not medical or regulatory advice, and not a claim about Nestlé's internal evidence strategy. Prepared by Jane Natividad for the Global Marketing Lead, Inflammatory Bowel Diseases &amp; Modulen® Brand Lead role, Nestlé Nutrition &amp; Health.
+      </p>
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        Levine A, et al. <i>Gastroenterology</i>. 2019;157(2):440&ndash;450.e8. &middot; Yanai H, et al. <i>Lancet Gastroenterol Hepatol</i>. 2022;7(1):49&ndash;59. &middot; Sigall Boneh R, Navas-López VM, Hussey S, et al. <i>Clin Gastroenterol Hepatol</i>. 2024 (online Dec 26, 2024) &mdash; <a href="https://www.ginutritionfoundation.org/research/modified-crohns-disease-exclusion-diet-maintains-remission-in-pediatric-crohns-disease-randomized-controlled-trial" target="_blank" rel="noopener">summary</a><br>
+        CD-HOPE (GETAID pédiatrique). <i>Lancet Gastroenterol Hepatol</i>. 2025 &mdash; <a href="https://www.thelancet.com/journals/langas/article/PIIS2468-1253(25)00262-6/abstract" target="_blank" rel="noopener">abstract</a><br>
+        Niseteo T, et al. Modified Crohn's disease exclusion diet is equally effective as exclusive enteral nutrition: real-world data. <i>Nutr Clin Pract</i>. 2022 &mdash; <a href="https://pubmed.ncbi.nlm.nih.gov/34339527/" target="_blank" rel="noopener">PubMed</a><br>
+        Landorf E, et al. Formula modifications to the Crohn's disease exclusion diet do not impact therapy success. <i>J Pediatr Gastroenterol Nutr</i>. 2024 &mdash; <a href="https://onlinelibrary.wiley.com/doi/10.1002/jpn3.12215" target="_blank" rel="noopener">Wiley</a><br>
+        CD-EDEN, NCT05606419 &mdash; <a href="https://www.ginutritionfoundation.org/clinical-trials/the-crohns-disease-exclusion-diet-with-early-dairy-introduction-plus-partial-enteral-nutrition-cd-eden-in-adult-patients-with-crohns-disease" target="_blank" rel="noopener">GI Nutrition Foundation</a><br>
+        Nordic CDED adaptation, NCT07334340 &mdash; protocol document via <a href="https://cdn.clinicaltrials.gov/large-docs/40/NCT07334340/Prot_SAP_000.pdf" target="_blank" rel="noopener">ClinicalTrials.gov</a><br>
+        Microbial predictors of CDED remission. <i>Crohn's &amp; Colitis 360</i> &mdash; <a href="https://academic.oup.com/crohnscolitis360/article/8/3/otag071/8723705" target="_blank" rel="noopener">Oxford Academic</a><br>
+        TASTI-MM whole-food diet trial. <i>Gastroenterology</i>. 2025 &mdash; <a href="https://pubmed.ncbi.nlm.nih.gov/40553742/" target="_blank" rel="noopener">PubMed</a> &middot; <a href="https://gutsandgrowth.com/2025/10/09/tasty-healthy-whole-food-diet-for-crohns-disease/" target="_blank" rel="noopener">summary</a><br>
+        Application of the Crohn's Exclusion Diet: a Scoping Review. <i>J Nutrition</i>. 2026 &mdash; <a href="https://jn.nutrition.org/article/S0022-3166(26)00131-8/abstract" target="_blank" rel="noopener">abstract</a><br>
+        Management of pediatric Crohn's disease: ECCO&ndash;ESPGHAN guideline. <i>J Crohns Colitis</i>. 2021 &mdash; <a href="https://academic.oup.com/ecco-jcc/article/15/2/171/5918800" target="_blank" rel="noopener">Oxford Academic</a><br>
+        NICE NG129, Crohn's disease: management &mdash; <a href="https://www.nice.org.uk/guidance/ng129" target="_blank" rel="noopener">nice.org.uk</a><br>
+        <a href="https://www.crohnscolitisfoundation.org/about" target="_blank" rel="noopener">Crohn's &amp; Colitis Foundation (US)</a> &middot; <a href="https://www.crohnsandcolitis.org.uk/our-work/about-us" target="_blank" rel="noopener">Crohn's &amp; Colitis UK</a> &middot; <a href="https://www.dccv.de/die-dccv/wir-ueber-uns/" target="_blank" rel="noopener">DCCV (Germany)</a> &middot; <a href="https://crohnsandcolitis.ca/About-Us" target="_blank" rel="noopener">Crohn's and Colitis Canada</a> &middot; <a href="https://www.afa.asso.fr/" target="_blank" rel="noopener">afa Crohn RCH France</a> &middot; <a href="https://www.eu-patient.eu/Members/The-EPF-Members/Full-Membership/European-Federation-of-Crohns-and-Ulcerative-Colitis-Associations---EFCCA/" target="_blank" rel="noopener">EFCCA</a><br>
+        Kaplan GG, Windsor JW. The four epidemiological stages in the global evolution of inflammatory bowel disease. <i>Nat Rev Gastroenterol Hepatol</i>. 2021 &mdash; <a href="https://www.nature.com/articles/s41575-020-00360-x" target="_blank" rel="noopener">nature.com</a><br>
+        Kaplan GG. The global burden of inflammatory bowel disease: from 2025 to 2045. <i>Nat Rev Gastroenterol Hepatol</i>. 2025 &mdash; <a href="https://www.nature.com/articles/s41575-025-01097-1" target="_blank" rel="noopener">nature.com</a><br>
+        Global burden of pediatric/adolescent IBD, 1990&ndash;2021, with projections to 2050. <i>Front Pediatr</i>. 2025 &mdash; <a href="https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2025.1670440/full" target="_blank" rel="noopener">frontiersin.org</a><br>
+        <a href="https://www.nestlehealthscience-me.com/en/brands/modulen/modulen-ibd" target="_blank" rel="noopener">Modulen IBD (Middle East)</a> &middot; <a href="https://www.khaleejtimes.com/uae/uae-support-group-launched-for-patients-suffering-from-inflammatory-bowel-disease" target="_blank" rel="noopener">UAE IBD Society launch, Khaleej Times</a> &middot; <a href="https://www.researchgate.net/publication/235942223_Inflammatory_bowel_disease_register_Steps_towards_Crohn's_colitis_foundation_of_Saudi_Arabia_CCFSA" target="_blank" rel="noopener">CCFSA registry, ResearchGate</a> &middot; <a href="https://www.abcd.org.br/" target="_blank" rel="noopener">ABCD (Brazil)</a>
+      </p>
+
+      <p class="meta-line" style="margin-top:28px;">Related: <a href="https://jane-natividad.github.io/modulen.html">Evidence-to-Claim Brand Brief →</a> &middot; <a href="https://jane-natividad.github.io/modulife.html">ModuLife funnel teardown →</a></p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
