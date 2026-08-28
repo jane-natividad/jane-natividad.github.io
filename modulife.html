@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ModuLife Funnel Teardown — A Closer Look | Jane Natividad</title>
+<meta name="description" content="A self-directed teardown of ModuLife's live, HCP-gated Crohn's Disease Exclusion Diet funnel, researched by Jane Natividad before applying for Nestlé's Global Marketing Lead, IBD & Modulen Brand Lead role.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #ffffff;
+    --tint: #f6f8fb;
+    --ink: #1a1d29;
+    --ink-soft: #62666f;
+    --ink-muted: #a3a7b2;
+    --blue: #4a7fc9;
+    --blue-soft: #eaf1fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: -999px; background: var(--ink); color: var(--white);
+    padding: 12px 20px; z-index: 100; border-radius: 6px; text-decoration: none; font-size: 13px;
+  }
+  .skip-link:focus { left: 28px; top: 12px; }
+
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 600; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+  .back-link { color: var(--ink-soft); opacity: 0.8; text-decoration: none; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .back-link:hover { color: var(--blue); opacity: 1; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { padding: 96px 28px 48px; text-align: center; }
+  .eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 22px; }
+  .tick { background: var(--blue); width: 2px; height: 20px; display: inline-block; flex-shrink: 0; }
+  .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-muted); font-weight: 500; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--blue);
+    background: var(--blue-soft); padding: 6px 14px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4.2vw, 36px); line-height: 1.24; letter-spacing: -0.025em; font-weight: 600;
+    max-width: 640px; margin: 0 auto 14px;
+  }
+  .hero .subline { font-size: clamp(14.5px, 1.7vw, 16.5px); font-weight: 400; color: var(--ink-soft); max-width: 520px; margin: 0 auto; }
+
+  .note-band { padding: 0 28px 48px; text-align: center; }
+  .note {
+    max-width: 620px; margin: 0 auto; font-size: 13px; color: var(--ink-soft);
+    background: var(--tint); border-radius: 12px; padding: 16px 20px; text-align: left; line-height: 1.65;
+  }
+  .note strong { color: var(--ink); }
+
+  .band { padding: 8px 28px 96px; }
+
+  .article-card {
+    max-width: 700px; margin: 0 auto;
+    background: var(--white); border: 1px solid #e6e9ee; border-radius: 16px;
+    padding: 40px 40px 32px;
+  }
+  .meta-line { font-size: 12px; color: var(--ink-muted); margin: 0 0 24px; }
+  .section-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--blue); margin: 40px 0 14px;
+  }
+  .section-label:first-of-type { margin-top: 4px; }
+  h2.finding-h { font-size: 16.5px; font-weight: 600; color: var(--ink); margin: 26px 0 8px; }
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.72; margin: 0 0 14px; }
+  .article-card ul { margin: 0 0 14px; padding-left: 20px; }
+  .article-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+  .finding {
+    background: var(--tint); border-radius: 12px; padding: 16px 18px; margin: 14px 0 20px;
+    font-size: 13.5px; color: var(--ink); line-height: 1.65;
+  }
+  .finding b { color: var(--blue); }
+  .quote {
+    border-left: 2px solid var(--blue); padding: 2px 0 2px 16px; font-style: italic;
+    color: var(--ink-soft); margin: 14px 0; font-size: 13.5px;
+  }
+  .divider { border: none; border-top: 1px solid #eef0f4; margin: 36px 0; }
+  .experiment-box {
+    background: var(--tint); border-radius: 12px; padding: 20px 22px; margin: 16px 0;
+  }
+  .experiment-box p { margin-bottom: 10px; }
+  .experiment-box p:last-child { margin-bottom: 0; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
+  .stat-box { flex: 1 1 150px; background: var(--tint); border-radius: 10px; padding: 14px 16px; }
+  .stat-box .big { font-size: 20px; font-weight: 700; color: var(--ink); }
+  .stat-box .lbl { font-size: 11.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 3px; }
+  .sources { font-size: 11.5px; color: var(--ink-muted); line-height: 1.9; }
+  .sources a { color: var(--ink-muted); text-decoration: underline; }
+
+  footer.site { padding: 64px 0 48px; text-align: center; }
+  footer.site p { font-size: 11px; color: var(--ink-muted); }
+  footer.site a { color: var(--ink-muted); text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    .hero { padding: 64px 24px 36px; }
+    .article-card { padding: 26px 22px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="https://jane-natividad.github.io" class="logo">Jane Natividad</a>
+    <a href="https://jane-natividad.github.io#projects" class="back-link">← Back to portfolio</a>
+  </div>
+</header>
+
+<main id="top">
+  <div id="main"></div>
+
+  <section class="hero">
+    <div class="eyebrow-row"><span class="tick"></span><span class="eyebrow">A Closer Look</span></div>
+    <span class="badge">Funnel Teardown · Independent Work</span>
+    <h1>ModuLife funnel teardown — this one's B2B2C, and that changes what "conversion" even means.</h1>
+    <p class="subline">Applying the same teardown method to a live, public Nestlé Health Science funnel before applying for the Modulen® Brand Lead role.</p>
+  </section>
+
+  <section class="note-band">
+    <div class="note">
+      <strong>This should not go anywhere until someone at Nestlé (or with real knowledge of the business) has read it and confirmed nothing here is off.</strong> I'm reasoning from the outside, from public pages, app store listings, and a provider-locator map — I don't have access to ModuLife's actual funnel metrics, support data, or internal roadmap. This isn't a critique of the ModuLife team, who I have no visibility into beyond what's public — it's an example of how I approach a product cold, applied here to a companion piece of my <a href="https://jane-natividad.github.io/modulen.html">Evidence-to-Claim Brand Brief</a> on the same brand.
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="article-card">
+      <p class="meta-line">Work sample &middot; Researched August 28, 2026 &middot; Public sources only — mymodulife.com and its localized country sites, the iOS and Google Play app store listings, and modulifexpert.com's public registration page. No provider account was created, no training module completed, and no patient app access obtained.</p>
+
+      <p>While building the evidence brief linked above, I noticed Nestlé already built the exact thing the brief argues for: ModuLife, a branded program turning the CDED+Modulen trial evidence into a real patient offering. So I tore it down the same way I tore down Blair Health's and Phoenix's funnels before those applications — not to critique the team, but to test my own product instincts against something live and public rather than describe them in the abstract.</p>
+
+      <div class="section-label">What I Actually Looked At</div>
+      <ul>
+        <li><b>Marketing site:</b> mymodulife.com's homepage, /patients/, /providers/ (or /experts/), and /find-a-provider/, plus a spot-check of two localized country sites (mymodulife.de, mymodulife.fr).</li>
+        <li><b>Provider entry point:</b> modulifexpert.com, the registration/login page a healthcare provider is sent to in order to become a "ModuLife Expert." I viewed the page only — I did not register, log in, or start the training modules.</li>
+        <li><b>App Store listing (iOS):</b> apps.apple.com — ratings, version history, description.</li>
+        <li><b>Google Play listing (Android):</b> play.google.com — ratings, reviews, description, last-updated date.</li>
+        <li><b>A dated content artifact:</b> a ModuLife recipe-book PDF hosted on mymodulife.com, timestamped in its own file path.</li>
+      </ul>
+      <p>What I did <b>not</b> do: create a provider account, complete HCP training, enroll a test patient, or see the gated in-app patient experience — that entire layer is only reachable through a real healthcare provider, which is itself the first finding below.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">The Funnel, Stage by Stage</div>
+
+      <h2 class="finding-h">1. Awareness / homepage</h2>
+      <p>The homepage splits visitors immediately with a modal asking "Are you a healthcare provider?" and offers nine separate localized storefronts via a language/country selector: the US site plus mymodulife-me.com, mymodulife.co.il, mymodulife.de, mymodulife.fr, mymodulife.nl, mymodulife.it, mymodulife.pl, mymodulife.es, and mymodulife.com.br — each with its own registered-provider directory, confirmed by spot-checking two of them.</p>
+      <div class="finding"><b>Finding:</b> nine independently localized country sites is a real, proven rollout playbook, not a pilot. Which makes the shape of the funnel itself the more interesting story here than reach — see the next finding.</div>
+
+      <h2 class="finding-h">2. The structural fact: this is B2B2C, not B2C</h2>
+      <p>Unlike Blair or Phoenix, a patient cannot self-enroll. The <a href="https://mymodulife.com/find-a-provider/" target="_blank" rel="noreferrer">find-a-provider</a> page states plainly that "experts who agreed to be found on the map can grant you access to the ModuLife app" — access is a permission a healthcare provider hands out, not a signup form a patient fills in.</p>
+      <div class="finding"><b>Finding:</b> the entire top-of-funnel "conversion" that matters most isn't a patient completing a form, it's a clinician completing HCP training and staying active enough to keep granting access. That's a fundamentally different growth lever than the self-serve funnels I tore down for Blair and Phoenix — the bottleneck to solve for is supply-side (provider recruitment and activation), not demand-side (patient signup friction).</div>
+
+      <h2 class="finding-h">3. The supply-side front door</h2>
+      <p>The path to becoming an Expert routes to <a href="https://www.modulifexpert.com" target="_blank" rel="noreferrer">modulifexpert.com</a> — which, on the page itself, is a bare utility screen: "Nestle Login," a "Register Now" link, and "Forgot Password?" No persuasive copy, no training-time estimate, no "why become an expert" content on that specific page — all of that has to have already landed on the visitor before they click through from mymodulife.com/providers.</p>
+      <div class="finding"><b>Finding:</b> that's a real handoff gap. The marketing page selling the "why" and the login screen collecting the "yes" are two different systems with two different visual languages, and the moment a busy clinician actually has to act is the plainer, less persuasive one. mymodulife.com/providers describes three e-learning modules but states no time commitment — for a clinician deciding whether to start, "how long will this take me" is usually the first practical question, and I couldn't find an answer to it anywhere public.</div>
+
+      <h2 class="finding-h">4. Provider network: real, not a shell</h2>
+      <p>The directory isn't empty. I found individually named, real registered providers through public search results tied to specific country sites — a specialist gastro/colorectal dietitian and a physician listed under mymodulife.fr's provider store, and a provider location in Veldhoven, Netherlands, surfaced directly from the .com find-a-provider tool.</p>
+      <div class="finding"><b>Finding:</b> this confirms the funnel actually converts on the supply side at least some of the time, across multiple countries — useful context before assuming the training-commitment gap above is fatal rather than just a friction point worth measuring.</div>
+
+      <h2 class="finding-h">5. The app itself: two very different receptions</h2>
+      <div class="stat-row">
+        <div class="stat-box"><div class="big">2.5 / 5</div><div class="lbl">iOS App Store — 11 ratings</div></div>
+        <div class="stat-box"><div class="big">4.0&ndash;4.1 / 5</div><div class="lbl">Google Play — 45 reviews, 10K+ downloads</div></div>
+        <div class="stat-box"><div class="big">Jul 16, 2025</div><div class="lbl">Last update, both platforms</div></div>
+      </div>
+      <p>Same app (developer of record: Virtual Health Partners Inc, operating "on behalf of Nestlé Health Science" per the listing's own copyright line), same last-update date, and a large gap in reception between platforms.</p>
+      <div class="quote">"[Works] on my computer but it will not load on my phone... it is very frustrating," but otherwise "the platform is excellent" — Wendy, Google Play review, February 3, 2025.</div>
+      <div class="finding"><b>Finding:</b> the most likely explanation for the rating gap is sample size (11 ratings vs. 45), not a real quality difference — but Wendy's review names a specific, plausible iOS-side mobile-loading problem, which is exactly the kind of complaint that would depress a small iOS sample disproportionately. That's a hypothesis worth testing with real data, not a conclusion to assume from the outside.</div>
+
+      <h2 class="finding-h">6. A dated mismatch: marketing content is shipping, the app isn't</h2>
+      <p>A ModuLife recipe-book PDF on mymodulife.com is hosted at a URL path timestamped <b>February 2026</b> — seven months after both app stores' last listed update (July 2025). The brand is actively producing new patient-facing content well over a year into the app going untouched.</p>
+      <div class="finding"><b>Finding:</b> that's not necessarily a problem — a stable app with fresh content can be a sign of a mature, working product, not neglect. But it's worth someone in this role actually confirming which story is true, since "the app hasn't shipped in 13+ months" and "the content team is still actively producing new material" are both true at once, and only one read of that combination is reassuring.</div>
+
+      <hr class="divider">
+
+      <div class="section-label">One Specific, Testable Experiment</div>
+      <div class="experiment-box">
+        <p><b>Hypothesis:</b> the iOS/Android rating gap in section 5 is driven mostly by small-sample noise amplifying a real but narrow mobile-loading bug on iOS (as Wendy's review describes), not by a genuine cross-platform quality gap.</p>
+        <p><b>What I'd actually do first, in the role:</b> pull crash and support-ticket data segmented by OS for the last two quarters, and check whether "won't load on my phone"-type reports cluster on iOS specifically. If they do, that's a bounded engineering fix, not a product redesign — cheap to confirm, cheap to fix if confirmed. In parallel, add an in-app review prompt timed to a successful task completion (not app open) on both platforms, since 11 iOS ratings after this long live is too small a sample to react to either way without more signal.</p>
+        <p><b>What I'd measure:</b> iOS rating count and average over the following quarter, and whether newly-collected reviews still mention loading/access problems at the same rate. If the complaint pattern doesn't move, the real blocker is somewhere else in the experience, not the platform.</p>
+      </div>
+
+      <div class="section-label">One Honestly-Scoped Next-Market Idea</div>
+      <p>This ties directly to what I found while building the evidence brief: ModuLife already has nine live, localized country storefronts, each with its own registered-provider directory — a proven, repeatable rollout playbook. The two markets it's notably missing are the UK and Canada, both places where Modulen (the formula) has been prescribed for years through NHS and Health Canada channels respectively. I don't have visibility into why those two specifically haven't shipped yet, so I won't guess at a root cause here — but the <a href="https://jane-natividad.github.io/modulen.html">Evidence-to-Claim Brand Brief</a> walks through what a Regulatory/Market Access/Medical Affairs sequence to close that gap could actually look like in each of those two markets.</p>
+
+      <hr class="divider">
+
+      <div class="section-label">Sources</div>
+      <p class="sources">
+        <a href="https://mymodulife.com/" target="_blank" rel="noreferrer">mymodulife.com</a> — homepage, language/country selector<br>
+        <a href="https://mymodulife.com/patients/" target="_blank" rel="noreferrer">mymodulife.com/patients</a><br>
+        <a href="https://mymodulife.com/providers/" target="_blank" rel="noreferrer">mymodulife.com/providers</a> — Expert training &amp; registration description<br>
+        <a href="https://mymodulife.com/find-a-provider/" target="_blank" rel="noreferrer">mymodulife.com/find-a-provider</a> — provider locator, access-grant language<br>
+        <a href="https://www.modulifexpert.com" target="_blank" rel="noreferrer">modulifexpert.com</a> — provider registration/login page, viewed only<br>
+        <a href="https://mymodulife.de/" target="_blank" rel="noreferrer">mymodulife.de</a> &middot; <a href="https://mymodulife.fr/" target="_blank" rel="noreferrer">mymodulife.fr</a> — localized market spot-checks<br>
+        <a href="https://apps.apple.com/us/app/modulife/id1451478169" target="_blank" rel="noreferrer">apps.apple.com — ModuLife (iOS)</a><br>
+        <a href="https://play.google.com/store/apps/details?id=com.modulife.android" target="_blank" rel="noreferrer">play.google.com — ModuLife (Android)</a> — incl. Wendy's February 3, 2025 review<br>
+        ModuLife recipe-book PDF, hosted on mymodulife.com, file path timestamped February 2026
+      </p>
+
+      <p class="meta-line" style="margin-top:28px;">Related: <a href="https://jane-natividad.github.io/modulen.html">Evidence-to-Claim Brand Brief (Modulen® &amp; ModuLife®) →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 Jane Natividad &middot; <a href="https://jane-natividad.github.io">Back to full portfolio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
