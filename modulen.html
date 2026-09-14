@@ -151,6 +151,13 @@
   .claim-box .channel { font-size: 11px; color: var(--ink-muted); font-style: italic; }
   @media (max-width: 620px) { .claim-grid { grid-template-columns: 1fr; } }
 
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 20px; }
+  .stat-card { background: var(--tint); border-radius: 12px; padding: 16px 17px; }
+  .stat-card .stat-num { font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.22; margin-bottom: 5px; }
+  .stat-card .stat-label { font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; }
+  .stat-card .stat-src { font-size: 10px; color: var(--ink-muted); margin-top: 7px; display: block; }
+  @media (max-width: 700px) { .stat-grid { grid-template-columns: 1fr; } }
+
   .reg-callout {
     background: var(--amber-soft); border-radius: 12px; padding: 16px 18px; margin: 20px 0;
     font-size: 13.5px; color: var(--ink); line-height: 1.65;
@@ -282,8 +289,37 @@
 
       <hr class="divider">
 
+      <div class="tag">Sizing the Opportunity</div>
+      <h2 class="finding-h">4. What's publicly sizeable here — and what isn't</h2>
+      <p>Two adjacent markets are publicly sized. The specific thing Modulen® and ModuLife® compete for — CDED as a first-line, drug-sparing induction therapy for a defined slice of IBD patients — isn't, and I'm not going to manufacture a number to fill that gap.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num">$20.7B &rarr; $27.7B</div>
+          <div class="stat-label">Global IBD treatment market, 2023 &rarr; 2030 (3.8% CAGR) — overwhelmingly biologics and other pharmacotherapy, the category Modulen sits alongside as a drug-sparing alternative</div>
+          <span class="stat-src">Grand View Research, 2024</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">$10.6B &rarr; $17.3B</div>
+          <div class="stat-label">Global enteral nutrition market, 2024 &rarr; 2031 (7.3% CAGR) — gastrointestinal disorders is already the single largest application segment</div>
+          <span class="stat-src">The Insight Partners, 2025</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">&gt;1%</div>
+          <div class="stat-label">of the population in early-industrialized countries — most of ModuLife's 9 live markets among them — projected to be living with IBD within the next decade: the "compounding prevalence" stage</div>
+          <span class="stat-src">Kaplan, <i>Nat Rev Gastroenterol Hepatol</i>, 2025</span>
+        </div>
+      </div>
+
+      <div class="reg-callout">
+        <span class="label">What I'm deliberately not sizing</span>
+        I could multiply those two headline numbers into a made-up CDED total addressable market, but that would be a guess dressed up as data. The real figure turns on inputs that aren't public: what share of IBD patients are new-onset, mild-to-moderate and steroid-naive at diagnosis (Levine's actual trial population), what fraction of those are ever offered diet-based induction in the first place, and what ModuLife's real patient volume and account penetration look like today across its 9 live markets. That's exactly the data this role would have internally and I don't — so the honest version of "market sizing" here is showing the two real, cited anchors above and being explicit about where a true CDED-specific estimate would need Nestlé's own numbers to move from hypothesis to plan.
+      </div>
+
+      <hr class="divider">
+
       <div class="tag">Launch Sequence</div>
-      <h2 class="finding-h">4. UK &amp; Canada: launching ModuLife® where it isn't yet. Germany: deepening it where it already is.</h2>
+      <h2 class="finding-h">5. UK &amp; Canada: launching ModuLife® where it isn't yet. Germany: deepening it where it already is.</h2>
       <p>Four phases, each with one function clearly in the lead — because "influencing without direct authority" only works if everyone knows whose call it is at each step. UK and Canada are genuine first launches; Germany's program already exists, so its version of this sequence is about strengthening the reimbursement case behind it, not building the site.</p>
 
       <div class="flow-row">
@@ -321,7 +357,10 @@
         Canadian Food Inspection Agency — Foods for Special Dietary Use (Food and Drug Regulations, Division 24). <a href="https://inspection.canada.ca/en/food-labels/labelling/industry/foods-special-dietary-use" target="_blank" rel="noopener">inspection.canada.ca</a><br>
         Modulen® IBD product/prescriber pages: <a href="https://www.nestlehealthscience.co.uk/brands/modulen/modulen-ibd" target="_blank" rel="noopener">UK</a> &middot; <a href="https://www.nestlehealthscience.ca/en/brands/modulen/modulen-ibd" target="_blank" rel="noopener">Canada</a> &middot; <a href="https://www.nestlehealthscience.us/medical-nutrition/inflammatory-bowel-conditions" target="_blank" rel="noopener">US</a><br>
         ModuLife® brand &amp; patient program pages: <a href="https://www.nestlehealthscience.us/our-brands" target="_blank" rel="noopener">US</a> &middot; <a href="https://www.nestlehealthscience-me.com/en/brands/modulife" target="_blank" rel="noopener">Middle East</a> &middot; <a href="https://mymodulife.com/" target="_blank" rel="noopener">mymodulife.com</a> &middot; <a href="https://mymodulife.com/find-a-provider/" target="_blank" rel="noopener">provider locator</a> &middot; <a href="https://mymodulife.de/" target="_blank" rel="noopener">mymodulife.de</a> &middot; <a href="https://mymodulife.fr/" target="_blank" rel="noopener">mymodulife.fr</a> (language/country selector on mymodulife.com also lists live .nl, .it, .pl, .es, .com.br, .co.il, and mymodulife-me.com sites, each checked for a corresponding registered-provider directory)<br>
-        NutritionInsight — "Nestlé Health Science develops 'paradigm change' diet-based platform for Crohn's disease patients." <a href="https://www.nutritioninsight.com/news/nestl%C3%A9-health-science-develops-paradigm-change-diet-based-platform-for-crohns-disease-patients.html" target="_blank" rel="noopener">nutritioninsight.com</a>
+        NutritionInsight — "Nestlé Health Science develops 'paradigm change' diet-based platform for Crohn's disease patients." <a href="https://www.nutritioninsight.com/news/nestl%C3%A9-health-science-develops-paradigm-change-diet-based-platform-for-crohns-disease-patients.html" target="_blank" rel="noopener">nutritioninsight.com</a><br>
+        Grand View Research. "Inflammatory Bowel Disease (IBD) Treatment Market Report, 2024&ndash;2030." 2024. <a href="https://www.grandviewresearch.com/industry-analysis/inflammatory-bowel-disease-ibd-treatment-market" target="_blank" rel="noopener">grandviewresearch.com</a><br>
+        The Insight Partners. "Enteral Nutrition Market Size is expected to reach US$ 17.33 Billion by 2031, with CAGR of 7.3%." 2025. <a href="https://www.globenewswire.com/news-release/2025/05/09/3078344/0/en/Enteral-Nutrition-Market-Size-is-expected-to-reach-US-17-33-Billion-by-2031-with-CAGR-of-7-3-The-Insight-Partners.html" target="_blank" rel="noopener">globenewswire.com</a><br>
+        Kaplan GG. The global burden of inflammatory bowel disease: from 2025 to 2045. <i>Nat Rev Gastroenterol Hepatol</i>. 2025. <a href="https://www.nature.com/articles/s41575-025-01097-1" target="_blank" rel="noopener">nature.com</a>
       </p>
 
       <p class="meta-line" style="margin-top:28px;">Related: <a href="https://jane-natividad.github.io/modulife.html">ModuLife funnel teardown →</a> &middot; <a href="https://jane-natividad.github.io/ibd-landscape.html">IBD Evidence &amp; Patient Landscape Map →</a></p>
