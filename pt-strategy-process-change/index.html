@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A GPS for Organizational Change — Jane Natividad</title>
+<meta name="description" content="A work sample: one fictional enterprise change, tracked from impact through adoption, told from both the change lead's and a stakeholder's point of view, with AI drafting under a human-approval gate.">
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --accent: #0071e3;
+    --accent-soft: #e8f2ff;
+    --accent-border: #cce2ff;
+    --ink: #1d1d1f;
+    --ink-soft: #48484a;
+    --muted: #6e6e73;
+    --hairline: #e5e5e7;
+    --panel: #f5f5f7;
+    --bg: #ffffff;
+    --good: #1a7f4e;
+    --good-soft: #e7f6ee;
+    --warn: #9a6b00;
+    --warn-soft: #fff6e0;
+    --bad: #b3261e;
+    --bad-soft: #fdeceb;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  .eyebrow { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 14px; line-height: 1.18; text-wrap: balance; }
+  .byline { font-size: 12.8px; color: var(--muted); margin: 0 0 28px; }
+  .byline a { color: var(--muted); }
+  p { font-size: 14.5px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 16px; }
+  .lede { font-size: 15.5px; line-height: 1.6; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 20px 24px; margin: 0 0 28px; }
+  .section-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 40px 0 14px; }
+  .section-label:first-of-type { margin-top: 0; }
+  .section-sub { font-size: 12.5px; color: var(--muted); margin: -8px 0 18px; line-height: 1.55; }
+  .disclosure { font-size: 11.5px; line-height: 1.55; color: var(--muted); background: var(--panel); border-radius: 10px; padding: 12px 16px; margin: 0 0 32px; }
+  .back-link { display: inline-block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 22px; }
+  .back-link:hover { color: var(--accent); }
+
+  /* pipeline strip */
+  .pipeline { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .pipe-step { flex: 1 1 auto; min-width: 108px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 10px 12px; font-size: 11px; color: var(--ink-soft); line-height: 1.4; position: relative; }
+  .pipe-step.active { border-color: var(--accent-border); background: var(--accent-soft); }
+  .pipe-step b { display: block; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .pipeline-note { font-size: 11.5px; color: var(--muted); margin: 0 0 32px; }
+
+  /* change card */
+  .change-card { background: var(--panel); border-radius: 14px; padding: 20px 24px; margin: 0 0 8px; }
+  .change-card h2 { font-size: 17px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .change-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+  .meta-chip { font-size: 11px; font-weight: 600; color: var(--ink-soft); background: #fff; border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px; }
+
+  /* view toggle */
+  .view-toggle { display: flex; gap: 6px; background: var(--panel); border-radius: 12px; padding: 4px; margin: 0 0 6px; }
+  .view-toggle button { flex: 1; border: none; background: transparent; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 9px 10px; border-radius: 9px; cursor: pointer; font-family: inherit; }
+  .view-toggle button.on { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .view-note { font-size: 11.5px; color: var(--muted); margin: 0 0 22px; }
+
+  /* stakeholder cards (cockpit view) */
+  .stake-list { display: flex; flex-direction: column; gap: 12px; margin: 0 0 8px; }
+  .stake-card { border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 18px; }
+  .stake-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+  .stake-name { font-size: 13.8px; font-weight: 700; color: var(--ink); }
+  .stake-site { font-size: 11.3px; color: var(--muted); margin-top: 2px; }
+  .impact-chip { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .impact-chip.High { color: var(--bad); background: var(--bad-soft); }
+  .impact-chip.Medium { color: var(--warn); background: var(--warn-soft); }
+  .impact-chip.Low { color: var(--good); background: var(--good-soft); }
+
+  .draft-box { background: var(--panel); border-radius: 10px; padding: 12px 14px; margin: 10px 0 10px; font-size: 12.8px; line-height: 1.58; color: var(--ink); }
+  .draft-box.approved { background: var(--good-soft); }
+  .draft-label { display: flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .draft-label.approved { color: var(--good); }
+  .draft-label .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }
+  .draft-text { white-space: pre-wrap; }
+  .draft-edit { width: 100%; min-height: 84px; font: inherit; font-size: 12.8px; line-height: 1.55; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--accent-border); resize: vertical; }
+
+  .stake-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn { font-size: 11.8px; font-weight: 600; border-radius: 8px; padding: 7px 13px; cursor: pointer; font-family: inherit; border: 1px solid var(--hairline); background: #fff; color: var(--ink-soft); }
+  .btn:hover { background: var(--panel); }
+  .btn.primary { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .btn.primary:hover { background: #005bbf; }
+  .btn.ghost { color: var(--accent); border-color: var(--accent-border); background: #fff; }
+  .btn.ghost:hover { background: var(--accent-soft); }
+  .btn:disabled { opacity: 0.45; cursor: default; }
+  .approve-stamp { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* recipient view */
+  .recipient-picker { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .recipient-chip { font-size: 12px; font-weight: 600; color: var(--ink-soft); background: #fff; border: 1px solid var(--hairline); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+  .recipient-chip.on { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-border); }
+  .recipient-letter { border: 1px solid var(--hairline); border-radius: 14px; padding: 20px 22px; }
+  .recipient-letter h3 { font-size: 14.5px; margin: 0 0 4px; }
+  .recipient-letter .to-line { font-size: 11.5px; color: var(--muted); margin: 0 0 14px; }
+  .recipient-letter .body-text { font-size: 13.3px; line-height: 1.65; color: var(--ink); white-space: pre-wrap; }
+  .recipient-pending { font-size: 12.8px; color: var(--muted); font-style: italic; padding: 8px 2px; }
+
+  /* adoption / readiness */
+  .adopt-list { display: flex; flex-direction: column; gap: 10px; margin: 0 0 8px; }
+  .adopt-row { border: 1px solid var(--hairline); border-radius: 12px; padding: 13px 16px; }
+  .adopt-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .adopt-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+  .adopt-score { font-size: 12.5px; font-weight: 700; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .bar-track { height: 7px; background: var(--hairline); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
+  .bar-fill { height: 100%; border-radius: 999px; }
+  .status-chip { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 3px 9px; }
+  .status-chip.Ready { color: var(--good); background: var(--good-soft); }
+  .status-chip.Monitoring { color: var(--warn); background: var(--warn-soft); }
+  .status-chip.Needs-intervention { color: var(--bad); background: var(--bad-soft); }
+  .adopt-signal { font-size: 12px; color: var(--ink-soft); margin: 0 0 8px; }
+  .escalate-box { background: var(--bad-soft); border-radius: 8px; padding: 10px 12px; font-size: 11.8px; color: #7a1c14; line-height: 1.5; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .escalate-box.flagged { background: var(--panel); color: var(--muted); }
+
+  /* governance */
+  .gov-grid { display: flex; flex-direction: column; gap: 10px; margin: 0 0 36px; }
+  .gov-item { display: flex; gap: 12px; border: 1px solid var(--hairline); border-radius: 12px; padding: 13px 16px; }
+  .gov-icon { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; }
+  .gov-text b { display: block; font-size: 12.8px; color: var(--ink); margin-bottom: 2px; }
+  .gov-text span { font-size: 12.2px; color: var(--ink-soft); line-height: 1.55; }
+
+  .not-list { font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; margin: 0 0 36px; padding-left: 20px; }
+  .not-list li { margin-bottom: 6px; }
+
+  .why { font-size: 13.3px; font-style: italic; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 18px 22px; margin: 0 0 40px; line-height: 1.58; }
+
+  footer { border-top: 1px solid var(--hairline); padding-top: 20px; font-size: 12px; color: var(--muted); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 40px 18px 60px; }
+    h1 { font-size: 24px; }
+    .view-toggle { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="https://jane-natividad.github.io">&larr; Back to portfolio</a>
+
+  <div class="eyebrow">Strategic Process &amp; Change Management — Work Sample</div>
+  <h1>A GPS for organizational change: one rollout, tracked from impact to adoption</h1>
+  <p class="byline">Jane Natividad &nbsp;&middot;&nbsp; <a href="https://jane-natividad.github.io">jane-natividad.github.io</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/jane-natividad/">linkedin.com/in/jane-natividad</a></p>
+
+  <div class="lede">
+    Deciding what a process change should be is the easy half. The hard half is what this page is about: knowing who's affected, telling each of them what actually changes for <em>them</em>, using AI to draft that translation work without letting it publish anything on its own, and watching &mdash; honestly &mdash; whether adoption is real or just reported. One fictional change, two points of view: the change lead running it, and one stakeholder group living through it.
+  </div>
+
+  <div class="section-label">The pipeline this page walks through</div>
+  <div class="pipeline" id="pipeline"></div>
+  <p class="pipeline-note">A fixed, inspectable sequence &mdash; not an autonomous agent deciding what to do next. Every AI-touched step below is labeled, and nothing reaches the "recipient" view until a human has approved it.</p>
+
+  <div class="section-label">1 &middot; The change</div>
+  <div class="change-card">
+    <h2 id="change-title"></h2>
+    <p id="change-summary" style="margin:0;"></p>
+    <div class="change-meta" id="change-meta"></div>
+  </div>
+
+  <div class="section-label">2 &middot; Impact &amp; stakeholders</div>
+  <p class="section-sub">Switch between how the change lead sees this rollout and how one stakeholder group actually experiences it. Nothing appears in the recipient view until the change lead approves it here first.</p>
+  <div class="view-toggle">
+    <button id="tab-cockpit" class="on" type="button">Change-lead cockpit</button>
+    <button id="tab-recipient" type="button">Recipient view</button>
+  </div>
+
+  <div id="cockpit-panel">
+    <p class="view-note">AI drafts an impact summary for each affected group from the change record above. Review, edit if needed, and approve &mdash; only approved briefs become visible to that group.</p>
+    <div class="stake-list" id="stake-list"></div>
+  </div>
+
+  <div id="recipient-panel" style="display:none;">
+    <p class="view-note">Pick a stakeholder group to see exactly what they'd receive &mdash; nothing more, nothing less than the approved brief.</p>
+    <div class="recipient-picker" id="recipient-picker"></div>
+    <div id="recipient-content"></div>
+  </div>
+
+  <div class="section-label">3 &middot; Adoption &amp; readiness monitoring</div>
+  <p class="section-sub">Illustrative adoption signals per stakeholder group. The system flags where intervention may help &mdash; it never decides the intervention itself.</p>
+  <div class="adopt-list" id="adopt-list"></div>
+
+  <div class="section-label">Governance, by design not by policy doc</div>
+  <div class="gov-grid">
+    <div class="gov-item"><div class="gov-icon">1</div><div class="gov-text"><b>Human approval gate</b><span>Every AI-drafted brief sits in a visibly "awaiting review" state until the change lead approves it. Nothing publishes to a stakeholder group on its own.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">2</div><div class="gov-text"><b>Provenance</b><span>Every drafted brief is generated directly from the structured change record above &mdash; the same fields are visible to you as fed the draft, nothing is hidden inside a prompt.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">3</div><div class="gov-text"><b>Editable, not just approvable</b><span>A change lead can edit any draft before approving it &mdash; the AI's first pass is a starting point, not a final answer.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">4</div><div class="gov-text"><b>No autonomous escalation</b><span>When adoption signals suggest intervention, the page surfaces a recommended next step and a flag &mdash; it never marks anything "resolved" or "escalated" by itself.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">5</div><div class="gov-text"><b>Synthetic data only</b><span>The change, the three sites, the five stakeholder groups, and every adoption signal on this page are fictional, built for this demonstration. No real Roche process, site, employee, or metric is represented anywhere.</span></div></div>
+  </div>
+
+  <div class="section-label">What this deliberately does not do</div>
+  <ul class="not-list">
+    <li>No real organization is modeled &mdash; three sites and five stakeholder groups stand in for the shape of a large matrixed rollout, not an attempt to simulate one at real scale.</li>
+    <li>No model call, no API key, no network request &mdash; the "AI drafts" on this page are deterministic templates built from the structured fields you can see, not a live language-model call. That's a deliberate choice for this piece (a live, grounded call is demonstrated on the <a href="https://jane-natividad.github.io/roche-digital-solution-lead.html">RAG work sample</a> instead), not a limitation of the pattern.</li>
+    <li>No autonomous decisions &mdash; the page never approves its own drafts, never marks a rollout "adopted," and never resolves an escalation. Every judgment call sits with a human throughout.</li>
+    <li>No persistence &mdash; approvals and edits live in this browser tab's memory only and reset on refresh; nothing you do here is sent or saved anywhere.</li>
+  </ul>
+
+  <div class="why">
+    "The interesting design problem in enterprise change isn't the announcement &mdash; it's the translation. What does this actually mean for a supervisor on one shift at one site, versus a planner two functions away? AI is genuinely useful for drafting that translation at scale. It is not useful, and shouldn't be trusted, to decide on its own that the translation is right, or that adoption is happening. That boundary is what this page tries to make visible rather than just claim."
+  </div>
+
+  <div class="disclosure">
+    Illustrative, self-directed work sample, not a Roche project and not Roche work experience. Built in connection with Roche's Lead, Process and Change Management role (Job ID ROCHGLOBAL202609122776EXTERNALENGLOBAL), Mississauga. The change, sites, stakeholder groups, and all adoption signals are fictional, generated for this demonstration; none reflect a real Roche initiative, site, employee, or metric.
+  </div>
+
+  <footer>
+    Built as a work sample in connection with Roche's Lead, Process and Change Management role, in the same spirit as the deterministic weighted-scoring engine and the governed RAG demo built for two other Roche applications on the <a href="https://jane-natividad.github.io">main portfolio</a>. No frameworks, no build step &mdash; a static page and hand-written JavaScript.
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Fictional change record (all synthetic) ---------- */
+  var CHANGE = {
+    title: "New low-code deviation &amp; change-request intake workflow",
+    summary: "Replaces email- and spreadsheet-based deviation intake with a single structured low-code form and routing workflow, piloted across three fictional manufacturing sites ahead of a wider rollout.",
+    scope: ["Site Alpha — Oral Solids Manufacturing", "Site Beta — Biologics Fill-Finish", "Site Gamma — Packaging & Serialization"],
+    driver: "Deviation intake currently takes 3 different forms across the 3 sites, causing rework and inconsistent triage.",
+    goLive: "Illustrative go-live: Week 6"
+  };
+
+  var PIPELINE = [
+    { label: "1 · Trigger", text: "Change registered with scope, sites, and driver." },
+    { label: "2 · Assess", text: "AI drafts an impact summary per stakeholder group." },
+    { label: "3 · Human review", text: "Change lead edits and approves each draft." },
+    { label: "4 · Publish", text: "Approved briefs become visible in the recipient view." },
+    { label: "5 · Monitor", text: "Synthetic adoption signals tracked per group." },
+    { label: "6 · Escalate", text: "Low-readiness groups flagged for a human decision." }
+  ];
+
+  /* ---------- Fictional stakeholder groups ---------- */
+  var STAKEHOLDERS = [
+    {
+      id: "supervisors", name: "Manufacturing Supervisors", site: "Site Alpha — Oral Solids", impact: "High",
+      whatChanges: "You will log every deviation through the new intake form instead of the shared email inbox, starting at Site Alpha in week 2.",
+      whyItMatters: "Your team currently loses time re-explaining deviations that got lost in email. The new form routes automatically to QA, so follow-up questions come back faster.",
+      whatToDo: "Attend the 30-minute walkthrough in week 1 and use the new form for every deviation from week 2 onward — the old email inbox will stop being monitored.",
+      readiness: 38, signal: "Only 40% of supervisors have completed the walkthrough so far; the rest are on the fence about the new form replacing email entirely."
+    },
+    {
+      id: "qa", name: "Quality / QA Reviewers", site: "All three sites", impact: "High",
+      whatChanges: "Deviations will arrive pre-structured with severity and site tags already filled in, instead of free-text emails you currently re-format yourself.",
+      whyItMatters: "Roughly a third of your current triage time goes to reformatting inconsistent submissions before you can even assess them.",
+      whatToDo: "Review the new intake queue daily during the 3-week pilot and flag any missing fields back to the requester using the in-tool comment, not a side email.",
+      readiness: 71, signal: "QA has piloted structured intake before on a smaller scale and is the most ready group so far."
+    },
+    {
+      id: "planners", name: "Supply Chain Planners", site: "Site Beta — Biologics", impact: "Medium",
+      whatChanges: "You'll get an automatic notification when a deviation affects a batch already in your production plan, instead of hearing about it after the fact.",
+      whyItMatters: "The current gap between a deviation being logged and supply chain hearing about it has caused at least one avoidable scheduling conflict per quarter.",
+      whatToDo: "No new tool to learn — just confirm your notification routing is set correctly during week 3 setup.",
+      readiness: 64, signal: "Low effort ask for this group; readiness is being held back mainly by not yet completing notification setup."
+    },
+    {
+      id: "itautomation", name: "Site IT / Automation Leads", site: "Site Gamma — Packaging", impact: "Medium",
+      whatChanges: "You will own the low-code workflow's routing rules going forward instead of a central team maintaining them for you.",
+      whyItMatters: "Local ownership means routing rules can be adjusted for site-specific line configurations without waiting on a central backlog.",
+      whatToDo: "Complete the low-code admin training in week 2 and confirm you can edit a routing rule in the sandbox before go-live.",
+      readiness: 52, signal: "Training is scheduled but not yet completed; this group's readiness typically moves quickly once training happens."
+    },
+    {
+      id: "operators", name: "Frontline Operators", site: "All three sites", impact: "Low",
+      whatChanges: "Nothing changes in how you report an issue on the floor — supervisors will just log it differently behind the scenes.",
+      whyItMatters: "You shouldn't notice this change day-to-day; if you do notice a difference, that's useful signal the rollout needs a look.",
+      whatToDo: "Keep reporting issues to your supervisor as usual. No new training required for this group.",
+      readiness: 88, signal: "No new behavior expected of this group, so readiness is high by design — it's a useful check that the change is actually contained where it should be."
+    }
+  ];
+
+  var STATE = {};
+  STAKEHOLDERS.forEach(function (s) {
+    STATE[s.id] = { approved: false, edited: false, text: buildDraft(s), flagged: false };
+  });
+
+  function buildDraft(s) {
+    return "What's changing for you: " + s.whatChanges + "\n\nWhy it matters: " + s.whyItMatters + "\n\nWhat to do: " + s.whatToDo;
+  }
+
+  function readinessColor(score) {
+    if (score >= 70) return "var(--good)";
+    if (score >= 50) return "var(--warn)";
+    return "var(--bad)";
+  }
+  function readinessStatus(score) {
+    if (score >= 70) return "Ready";
+    if (score >= 50) return "Monitoring";
+    return "Needs-intervention";
+  }
+  function readinessStatusLabel(score) {
+    if (score >= 70) return "Ready";
+    if (score >= 50) return "Monitoring";
+    return "Needs intervention";
+  }
+  function recommendedAction(s) {
+    if (s.readiness >= 50) return null;
+    return "Recommended next step: schedule a short working session with " + s.name + " (" + s.site + ") before go-live — low completion on the walkthrough/training is the main driver, not resistance to the change itself.";
+  }
+
+  /* ---------- Render: pipeline ---------- */
+  var pipelineEl = document.getElementById("pipeline");
+  PIPELINE.forEach(function (p, i) {
+    var div = document.createElement("div");
+    div.className = "pipe-step" + (i < 4 ? " active" : "");
+    div.innerHTML = "<b>" + p.label + "</b>" + p.text;
+    pipelineEl.appendChild(div);
+  });
+
+  /* ---------- Render: change card ---------- */
+  document.getElementById("change-title").textContent = CHANGE.title.replace(/&amp;/g, "&");
+  document.getElementById("change-summary").textContent = CHANGE.summary;
+  var metaEl = document.getElementById("change-meta");
+  CHANGE.scope.forEach(function (site) {
+    var c = document.createElement("span"); c.className = "meta-chip"; c.textContent = site; metaEl.appendChild(c);
+  });
+  var driverChip = document.createElement("span"); driverChip.className = "meta-chip"; driverChip.textContent = "Driver: " + CHANGE.driver; metaEl.appendChild(driverChip);
+  var goLiveChip = document.createElement("span"); goLiveChip.className = "meta-chip"; goLiveChip.textContent = CHANGE.goLive; metaEl.appendChild(goLiveChip);
+
+  /* ---------- Render: cockpit ---------- */
+  var stakeListEl = document.getElementById("stake-list");
+
+  function renderStakeholders() {
+    stakeListEl.innerHTML = "";
+    STAKEHOLDERS.forEach(function (s) {
+      var st = STATE[s.id];
+      var card = document.createElement("div");
+      card.className = "stake-card";
+
+      var head = document.createElement("div");
+      head.className = "stake-head";
+      head.innerHTML = '<div><div class="stake-name">' + s.name + '</div><div class="stake-site">' + s.site + '</div></div>'
+        + '<div class="impact-chip ' + s.impact + '">' + s.impact + ' impact</div>';
+      card.appendChild(head);
+
+      var draftBox = document.createElement("div");
+      draftBox.className = "draft-box" + (st.approved ? " approved" : "");
+      var label = document.createElement("div");
+      label.className = "draft-label" + (st.approved ? " approved" : "");
+      label.innerHTML = '<span class="dot"></span>' + (st.approved ? "Approved — visible in recipient view" : "AI-drafted — awaiting review" + (st.edited ? " (edited)" : ""));
+      draftBox.appendChild(label);
+
+      if (st.editing) {
+        var ta = document.createElement("textarea");
+        ta.className = "draft-edit";
+        ta.value = st.text;
+        ta.addEventListener("input", function () { st.text = ta.value; });
+        draftBox.appendChild(ta);
+      } else {
+        var textEl = document.createElement("div");
+        textEl.className = "draft-text";
+        textEl.textContent = st.text;
+        draftBox.appendChild(textEl);
+      }
+      card.appendChild(draftBox);
+
+      var actions = document.createElement("div");
+      actions.className = "stake-actions";
+
+      if (!st.approved) {
+        var editBtn = document.createElement("button");
+        editBtn.className = "btn";
+        editBtn.type = "button";
+        editBtn.textContent = st.editing ? "Done editing" : "Edit draft";
+        editBtn.addEventListener("click", function () {
+          if (st.editing) { st.edited = (st.text !== buildDraft(s)); }
+          st.editing = !st.editing;
+          renderStakeholders(); renderRecipient();
+        });
+        actions.appendChild(editBtn);
+
+        var approveBtn = document.createElement("button");
+        approveBtn.className = "btn primary";
+        approveBtn.type = "button";
+        approveBtn.textContent = "Approve & publish";
+        approveBtn.addEventListener("click", function () {
+          st.approved = true; st.editing = false;
+          st.approvedAt = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+          renderStakeholders(); renderRecipient();
+        });
+        actions.appendChild(approveBtn);
+      } else {
+        var revokeBtn = document.createElement("button");
+        revokeBtn.className = "btn";
+        revokeBtn.type = "button";
+        revokeBtn.textContent = "Revise (unpublish)";
+        revokeBtn.addEventListener("click", function () {
+          st.approved = false;
+          renderStakeholders(); renderRecipient();
+        });
+        actions.appendChild(revokeBtn);
+
+        var stamp = document.createElement("div");
+        stamp.className = "approve-stamp";
+        stamp.textContent = "Approved by change lead at " + st.approvedAt + " (this session).";
+        card.appendChild(stamp);
+      }
+      card.appendChild(actions);
+      stakeListEl.appendChild(card);
+    });
+  }
+
+  /* ---------- Render: recipient view ---------- */
+  var recipientPickerEl = document.getElementById("recipient-picker");
+  var recipientContentEl = document.getElementById("recipient-content");
+  var selectedRecipient = STAKEHOLDERS[0].id;
+
+  function renderRecipientPicker() {
+    recipientPickerEl.innerHTML = "";
+    STAKEHOLDERS.forEach(function (s) {
+      var chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "recipient-chip" + (s.id === selectedRecipient ? " on" : "");
+      chip.textContent = s.name;
+      chip.addEventListener("click", function () { selectedRecipient = s.id; renderRecipientPicker(); renderRecipient(); });
+      recipientPickerEl.appendChild(chip);
+    });
+  }
+
+  function renderRecipient() {
+    var s = STAKEHOLDERS.filter(function (x) { return x.id === selectedRecipient; })[0];
+    var st = STATE[s.id];
+    if (!st.approved) {
+      recipientContentEl.innerHTML = '<div class="recipient-pending">Not yet published for ' + s.name + ' — the change lead hasn’t approved this brief in the cockpit view yet.</div>';
+      return;
+    }
+    var letter = document.createElement("div");
+    letter.className = "recipient-letter";
+    letter.innerHTML = '<h3>What this means for you</h3><div class="to-line">To: ' + s.name + ' &middot; ' + s.site + '</div>'
+      + '<div class="body-text"></div>';
+    letter.querySelector(".body-text").textContent = st.text;
+    recipientContentEl.innerHTML = "";
+    recipientContentEl.appendChild(letter);
+  }
+
+  /* ---------- Render: adoption / readiness ---------- */
+  var adoptListEl = document.getElementById("adopt-list");
+  function renderAdoption() {
+    adoptListEl.innerHTML = "";
+    STAKEHOLDERS.forEach(function (s) {
+      var row = document.createElement("div");
+      row.className = "adopt-row";
+      var statusClass = readinessStatus(s.readiness);
+      var statusLabel = readinessStatusLabel(s.readiness);
+      row.innerHTML = '<div class="adopt-head"><div class="adopt-name">' + s.name + '</div>'
+        + '<div style="display:flex;gap:8px;align-items:center;"><span class="adopt-score">' + s.readiness + '%</span>'
+        + '<span class="status-chip ' + statusClass + '">' + statusLabel + '</span></div></div>'
+        + '<div class="bar-track"><div class="bar-fill" style="width:' + s.readiness + '%;background:' + readinessColor(s.readiness) + ';"></div></div>'
+        + '<div class="adopt-signal">' + s.signal + '</div>';
+
+      var action = recommendedAction(s);
+      if (action) {
+        var box = document.createElement("div");
+        var st = STATE[s.id];
+        box.className = "escalate-box" + (st.flagged ? " flagged" : "");
+        var span = document.createElement("span");
+        span.textContent = st.flagged ? "Flagged for change-lead decision ✓" : action;
+        box.appendChild(span);
+        if (!st.flagged) {
+          var flagBtn = document.createElement("button");
+          flagBtn.className = "btn";
+          flagBtn.type = "button";
+          flagBtn.style.background = "#fff";
+          flagBtn.textContent = "Flag for change-lead decision";
+          flagBtn.addEventListener("click", function () { st.flagged = true; renderAdoption(); });
+          box.appendChild(flagBtn);
+        }
+        row.appendChild(box);
+      }
+      adoptListEl.appendChild(row);
+    });
+  }
+
+  /* ---------- View toggle ---------- */
+  var tabCockpit = document.getElementById("tab-cockpit");
+  var tabRecipient = document.getElementById("tab-recipient");
+  var cockpitPanel = document.getElementById("cockpit-panel");
+  var recipientPanel = document.getElementById("recipient-panel");
+  tabCockpit.addEventListener("click", function () {
+    tabCockpit.classList.add("on"); tabRecipient.classList.remove("on");
+    cockpitPanel.style.display = "block"; recipientPanel.style.display = "none";
+  });
+  tabRecipient.addEventListener("click", function () {
+    tabRecipient.classList.add("on"); tabCockpit.classList.remove("on");
+    recipientPanel.style.display = "block"; cockpitPanel.style.display = "none";
+  });
+
+  /* ---------- Init ---------- */
+  renderStakeholders();
+  renderRecipientPicker();
+  renderRecipient();
+  renderAdoption();
+})();
+</script>
+</body>
+</html>
